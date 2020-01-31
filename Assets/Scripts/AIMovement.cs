@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIMeleeMovement : MonoBehaviour
+public class AIMovement : MonoBehaviour
 {
     // Distance to player 
     public float distance = 5.0f;
@@ -22,12 +22,14 @@ public class AIMeleeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         Vector2 dir = player.position - transform.position;
-        if (dir.magnitude > distance) {
+        if (dir.magnitude > distance)
+        {
             dir.Normalize();
             Vector2 pos = transform.position;
             transform.position = pos + dir * speed * Time.deltaTime;
         }
     }
+
 }

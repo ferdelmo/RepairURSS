@@ -56,4 +56,8 @@ public class Movement : MonoBehaviour
         return rot_z - 90f;
     }
 
+    public void Message()
+    {
+        Debug.Log("daño");
+    }
 }
