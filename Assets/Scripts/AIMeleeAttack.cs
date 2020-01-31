@@ -8,10 +8,13 @@ public class AIMeleeAttack : MonoBehaviour
     // Min distance to attack to player 
     public float distance = 1.0f;
 
+    // Damage inflicted by this enemy
+    public float damage = 20.0f;
+
     // Position of the player
     GameObject player;
 
-    Movement sn;
+    Health health;
     // Start is called before the first frame update
 
     float cadence = 1.0f;
@@ -23,7 +26,7 @@ public class AIMeleeAttack : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         if (player != null)
         {
-            sn = player.GetComponent<Movement>();
+            health = player.GetComponent<Health>();
         }
     }
 
@@ -31,15 +34,17 @@ public class AIMeleeAttack : MonoBehaviour
     void Update()
     {
         Vector2 dir = player.transform.position - transform.position;
-        if (distance < dir.magnitude)
+        if (distance >= dir.magnitude)
         {
+            Debug.DrawLine(transform.position, dir, Color.green, 2.5f);
             if(lastHitTime > cadence)
             {
-                sn.Message();
+                health.Damage(damage);
                 lastHitTime = 0;
             }
 
             lastHitTime += Time.deltaTime;
         }
     }
+
 }

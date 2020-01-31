@@ -30,6 +30,9 @@ public class AIMovement : MonoBehaviour
             Vector2 pos = transform.position;
             transform.position = pos + dir * speed * Time.deltaTime;
         }
+        dir.Normalize();
+        float angle = Movement.OrientDirection(dir);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
 }
