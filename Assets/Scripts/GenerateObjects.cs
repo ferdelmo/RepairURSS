@@ -56,12 +56,12 @@ public class GenerateObjects : MonoBehaviour
 
             if(valorPos >= aleatorio)
             {
-                Debug.Log(pos.z + ", " + radius + " -> " +
-                     valorPos + " -- " + aleatorio);
+                /*Debug.Log(pos.z + ", " + radius + " -> " +
+                     valorPos + " -- " + aleatorio);*/
                 //instantiate object
                 instantiated++;
 
-                pos.z = 0;
+                pos.z = -center.position.z;
 
                 GameObject c = Instantiate(obj, center.position + pos, center.rotation);
             }
