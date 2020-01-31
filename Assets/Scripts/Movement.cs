@@ -8,8 +8,6 @@ public class Movement : MonoBehaviour
     public float velocity = 10.0f;
 
     Vector2 direction;
-
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -57,4 +55,5 @@ public class Movement : MonoBehaviour
         float rot_z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         return rot_z - 90f;
     }
+
 }
