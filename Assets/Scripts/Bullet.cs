@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            Debug.Log("Hacer el damage de la vida: " + damage);
+            collision.GetComponent<Health>().Damage(damage);
             Destroy(this.gameObject);
         }
     }
