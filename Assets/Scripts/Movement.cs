@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
     //Velocidad del personaje
     public float velocity = 10.0f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +27,16 @@ public class Movement : MonoBehaviour
 
         Vector2 pos = transform.position;
 
+        //Mover al personaje
         transform.position = pos + directionMov * velocity * Time.deltaTime;
+
+        Vector2 newPos = transform.position;
+
+        //Orientar al personaje
+        if(directionAim != Vector2.zero)
+        {
+            float rot_z = Mathf.Atan2(directionAim.y, directionAim.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+        }
     }
 }
