@@ -20,8 +20,8 @@ public class Movement : MonoBehaviour
         Vector2 directionMov = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector2 directionAim = new Vector2(Input.GetAxis("HorizontalAim"), Input.GetAxis("VerticalAim"));
 
-        Debug.Log("Mov: " + directionMov);
-        Debug.Log("Aim: " + directionAim);
+        //Debug.Log("Mov: " + directionMov);
+        //Debug.Log("Aim: " + directionAim);
 
         directionMov.Normalize();
         directionAim.Normalize();
