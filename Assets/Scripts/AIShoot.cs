@@ -77,7 +77,7 @@ public class AIShoot : MonoBehaviour
 
         if (CanShoot())
         {
-            Debug.Log("DISPARA");
+            //Debug.Log("DISPARA");
             timeLastShoot = 0;
             Shoot();
         }
