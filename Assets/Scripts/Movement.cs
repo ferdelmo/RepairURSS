@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
     //Velocidad del personaje
     public float velocity = 10.0f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +28,7 @@ public class Movement : MonoBehaviour
         Vector2 pos = transform.position;
 
         transform.position = pos + directionMov * velocity * Time.deltaTime;
+
     }
+
 }
