@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     Vector2 direction;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
