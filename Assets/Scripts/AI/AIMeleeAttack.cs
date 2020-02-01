@@ -11,6 +11,9 @@ public class AIMeleeAttack : MonoBehaviour
     // Damage inflicted by this enemy
     public float damage = 20.0f;
 
+    //Damage de las balas que dispara
+    public float baseDamage = 5;
+
     // Position of the player
     GameObject player;
 

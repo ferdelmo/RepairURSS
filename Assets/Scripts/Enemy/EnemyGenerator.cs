@@ -30,13 +30,18 @@ public class EnemyGenerator : MonoBehaviour
         {
             if (Random.Range(0.0f, 1.0f) <= meleeProbability)
             {
-                GameObject project = Instantiate(enemies[0], spawnPoint.position,
+                GameObject enemy = Instantiate(enemies[0], spawnPoint.position,
                                 spawnPoint.rotation);
+                enemy.GetComponent<AIMeleeAttack>().damage =
+                    enemy.GetComponent<AIMeleeAttack>().baseDamage * USSRManager.Instance.level;
             }
             else
             {
-                GameObject project = Instantiate(enemies[1], spawnPoint.position,
+                GameObject enemy = Instantiate(enemies[1], spawnPoint.position,
                                 spawnPoint.rotation);
+                enemy.GetComponent<AIShoot>().damage =
+                    enemy.GetComponent<AIShoot>().baseDamage * USSRManager.Instance.level;
+
             }
             previousSpawnTime = 0.0f;
         }
