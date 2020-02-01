@@ -8,12 +8,6 @@ public class USSRManager : MonoBehaviour
 {
     public Country country;
 
-    public Text houseText;
-    public Text wheatText;
-
-    private HousesHUD housesHUD;
-    private WheatHUD wheatHUD;
-
     private static USSRManager _instance;
 
     public float level = 1;
@@ -51,25 +45,17 @@ public class USSRManager : MonoBehaviour
 
         wheats2generate *= (int) level;
 
-        housesHUD = houseText.GetComponent<HousesHUD>();
-        wheatHUD = wheatText.GetComponent<WheatHUD>();
-
-        housesHUD.updateText();
-        wheatHUD.updateText();
-
         DontDestroyOnLoad(this.gameObject);
     }
 
     public void IncrementNumWheats()
     {
         numWheats++;
-        wheatHUD.updateText();
     }
 
     public void IncrementNumHouses()
     {
         numHouses++;
-        housesHUD.updateText();
     }
 
     public void OnPlayerDeath()

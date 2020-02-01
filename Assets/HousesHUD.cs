@@ -14,19 +14,19 @@ public class HousesHUD : MonoBehaviour
     void Start()
     {
         currentHouses = USSRManager.Instance.numHouses;
-        totalHouses = USSRManager.Instance.houses2generate;
-        houseText = GetComponent<Text>();
+                
         Debug.Log("house TEXT: " + houseText);
+    }
+
+    private void Awake()
+    {
+        houseText = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public void updateText()
-    {
+        totalHouses = USSRManager.Instance.houses2generate;
         houseText.text = "houseText: " + currentHouses + "/" + totalHouses;
     }
 }
