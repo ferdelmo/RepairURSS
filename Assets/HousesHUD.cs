@@ -13,8 +13,7 @@ public class HousesHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHouses = USSRManager.Instance.numHouses;
-                
+        totalHouses = USSRManager.Instance.houses2generate;
         Debug.Log("house TEXT: " + houseText);
     }
 
@@ -26,7 +25,7 @@ public class HousesHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalHouses = USSRManager.Instance.houses2generate;
+        currentHouses = USSRManager.Instance.numHouses;
         houseText.text = "houseText: " + currentHouses + "/" + totalHouses;
     }
 }
