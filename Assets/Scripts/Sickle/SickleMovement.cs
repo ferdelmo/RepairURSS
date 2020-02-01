@@ -61,7 +61,6 @@ public class SickleMovement : MonoBehaviour
                 Debug.Log("Melee attack");
                 realDistance = 0.0f;
                 gameObject.GetComponent<CircleCollider2D>().enabled = true;
-                gameObject.GetComponent<SpriteRenderer>().enabled = true;
                 StartCoroutine(MeleeAttack( 0.25f));
             } else
             {
