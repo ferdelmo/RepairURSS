@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weat : MonoBehaviour
+public class Wheat : MonoBehaviour
 {
     public float regenerateTime = 5f;
 
@@ -14,7 +14,7 @@ public class Weat : MonoBehaviour
 
     SpriteRenderer sr;
 
-    public GameObject weatLeft;
+    public GameObject wheatLeft;
 
     private void Start()
     {
@@ -22,15 +22,11 @@ public class Weat : MonoBehaviour
         sr.color = alive;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Cut()
     {
-        // checkear la colision con la hoz
-        if(collision.tag == "Player" && live)
-        {
-            live = false;
-            StartCoroutine(Revive());
-            Instantiate(weatLeft, transform.position, transform.rotation);
-        }
+        live = false;
+        StartCoroutine(Revive());
+        Instantiate(wheatLeft, transform.position, transform.rotation);
     }
 
     IEnumerator Revive()
@@ -44,4 +40,6 @@ public class Weat : MonoBehaviour
         }
         live = true;
     }
+
+
 }

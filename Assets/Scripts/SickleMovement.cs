@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SickleMovement : MonoBehaviour
 {
+    public Slider slider;
+    public GameObject player;
     public float maxTimeToReach = 5.0f;
     public float maxTimeToReturn = 5.0f;
     public float speed = 0.1f;
-    public float strength = 1.0f;
-    public Vector3 rotation;
+    private float strength = 1.0f;
     private bool sickleShooted = false;
     public Vector2 playerPosition;
     private float distanceTravelled;
@@ -34,8 +36,6 @@ public class SickleMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerPosition = transform.parent.position;
-        rotation = transform.forward;
 
     }
 
@@ -44,45 +44,52 @@ public class SickleMovement : MonoBehaviour
     {
         if( Input.GetKeyDown( KeyCode.L) && !keyPressed)
         {
-            downTime = Time.time;
+            InitializeSliderValue();
+            downTime = Time.time;       
             keyPressed = true;
         }
 
-        if( Input.GetKeyUp( KeyCode.L))
+        //Hacer que el slider se actualice con el tiempo hasta que llegue a 1
+        if( keyPressed && !sickleShooted) {
+            SetSliderValue();
+        }
+
+        if( Input.GetKeyUp( KeyCode.L) && !sickleShooted)
         {
-            float tiempoPasado = Time.time- downTime;
+            float tiempoPasado = Time.time - downTime;
             strength = tiempoPasado / maxTimeToReach;
             Mathf.Min(1, strength);
             currentDistance = 0.0f;
             realDistance = strength * maxDistance;
-            Debug.Log("realDistance: " + realDistance);
+            //Debug.Log("realDistance: " + realDistance);
             timeTravelledToPlayer = 0.0f;
+            HideSlider();
             sickleShooted = true;
             keyPressed = false;
         }
 
         if( sickleShooted)
         {    
-            //transform.Translate( transform.parent.transform.forward * Time.deltaTime * speed);
-            transform.position += transform.parent.up * speed * Time.deltaTime;
-
+            transform.position += player.transform.up * speed * Time.deltaTime;
             currentDistance += Time.deltaTime * speed;
-            Debug.Log("currentDistance" + currentDistance);
 
-            //Debug.DrawRay(transform.position, transform.position + transform.parent.up * currentDistance, Color.black, 5f);
-            //transform.parent.position = transform.position + transform.parent.forward * currentDistance;
             if ( currentDistance >= realDistance)
             {
                 timeTravelledToPlayer += Time.deltaTime;
                 playerReached = timeTravelledToPlayer / maxTimeToReturn;
-                transform.position = Vector2.Lerp(transform.position, playerPosition, playerReached);
+                transform.position = Vector2.Lerp(transform.position, player.transform.position, playerReached);
 
                 if (playerReached >= 1)
                 {
                     sickleShooted = false;
                 }
             }                        
-        } 
+        } else
+        {
+            timeTravelledToPlayer += Time.deltaTime;
+            playerReached = timeTravelledToPlayer / maxTimeToReturn;
+            transform.position = Vector2.Lerp(transform.position, player.transform.position /*transform.parent.position*/, playerReached);
+        }
 
 
         
@@ -170,8 +177,23 @@ public class SickleMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void InitializeSliderValue()
     {
-
+        slider.value = 0.0f;
     }
+
+    private void SetSliderValue()
+    {
+        if( keyPressed)
+        {
+            slider.gameObject.SetActive( true);
+            slider.value += 0.01f;
+        }       
+    }
+
+    private void HideSlider()
+    {
+        slider.gameObject.SetActive( false);
+    }
+
 }
