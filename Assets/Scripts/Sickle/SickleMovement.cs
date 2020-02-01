@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SickleMovement : MonoBehaviour
 {
     public Slider slider;
+    private bool meleeAttack = false;
     public GameObject player;
     public float maxTimeToReach = 5.0f;
     public float maxTimeToReturn = 5.0f;
@@ -42,17 +43,27 @@ public class SickleMovement : MonoBehaviour
         }
 
         //Hacer que el slider se actualice con el tiempo hasta que llegue a 1
-        if( keyPressed && !sickleShooted) {
+        if (keyPressed && !sickleShooted)
+        {
             SetSliderValue();
         }
 
-        if( Input.GetButtonUp( "Sickle")  && !sickleShooted)
+        if ( Input.GetButtonUp( "Sickle")  && !sickleShooted)
         {
             float tiempoPasado = Time.time - downTime;
+            if( tiempoPasado < 0.25f)
+            {
+                meleeAttack = true;
+                Debug.Log("Melee attack");
+                realDistance = 0.0f;
+            } else
+            {
+                meleeAttack = false;
+                realDistance = strength * maxDistance;
+            }
             strength = tiempoPasado / maxTimeToReach;
             Mathf.Min(1, strength);
-            currentDistance = 0.0f;
-            realDistance = strength * maxDistance;
+            currentDistance = 0.0f;          
             //Debug.Log("realDistance: " + realDistance);
             timeTravelledToPlayer = 0.0f;
             HideSlider();
@@ -60,9 +71,13 @@ public class SickleMovement : MonoBehaviour
             keyPressed = false;
         }
 
-        if( sickleShooted)
+        if ( sickleShooted)
         {    
-            transform.position += player.transform.up * speed * Time.deltaTime;
+            if( realDistance != 0)
+            {
+                transform.position += player.transform.up * speed * Time.deltaTime;
+            }
+   
             currentDistance += Time.deltaTime * speed;
 
             if ( currentDistance >= realDistance)
