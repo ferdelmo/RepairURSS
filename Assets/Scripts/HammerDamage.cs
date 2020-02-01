@@ -31,6 +31,7 @@ public class HammerDamage : MonoBehaviour
     {
         if (isPushedAttack && other.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Dam");
             other.GetComponent<Health>().Damage(hammerDamage);
         }
     }
