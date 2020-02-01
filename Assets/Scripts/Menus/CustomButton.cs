@@ -23,5 +23,7 @@ public class CustomButton : MonoBehaviour, ISelectHandler // required interface 
 
         cc.Select();
 
+        USSRManager.Instance.country = cc.country;
+
     }
 }

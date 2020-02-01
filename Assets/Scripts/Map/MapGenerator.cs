@@ -26,21 +26,25 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         tex = new Texture2D(x, y, TextureFormat.ARGB32, false);
+=======
+        Country country = USSRManager.Instance.country;
+>>>>>>> be7b1d4496dc2642137120839e2621c27da3fb4b
 
-        for(int i = 0; i < x; i++)
-        {
-            for (int j = 0; j < x; j++)
-            {
-                tex.SetPixel(i, j, Color.black);
-            }
-        }
+        numHouses = 10;
 
-        Random.InitState(System.DateTime.Now.Hour+System.DateTime.Now.Second); 
+        numWheat = 10;
 
-        GenerateMap();
+        numBanks = 2;
 
+        // generar dependiendo del countrya
+
+<<<<<<< HEAD
         SaveTextureAsPNG(tex, Application.dataPath+"texture.png");
+=======
+        InitializeMap();
+>>>>>>> be7b1d4496dc2642137120839e2621c27da3fb4b
     }
 
     public void InitializeMap()
