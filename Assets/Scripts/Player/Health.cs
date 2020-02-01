@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     // Player's maxhealth
     public float maxHealth = 100;
 
+    public ProgressBar healthProgressBar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,13 +42,14 @@ public class Health : MonoBehaviour
         Debug.Log("Daños");
         if(health - damage < 0)
         {
-            health = 0;
+            health = 0;  
             OnDeath();
         }
         else
         {
             health = health - damage;
         }
+        healthProgressBar.setCurrentFill( health / maxHealth);
         //Debug.Log("damaged");
     }
 
