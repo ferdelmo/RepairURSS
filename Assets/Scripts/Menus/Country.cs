@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "USSR/Country")]
 public class Country : ScriptableObject
 {
     public string countryName;
 
-    public int population;
-    public int size;
+    //in Millions
+    public float population;
+    //in km^2
+    public float size;
 
     public float difficulty;
 
