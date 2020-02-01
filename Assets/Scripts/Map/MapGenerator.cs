@@ -131,7 +131,17 @@ public class MapGenerator : MonoBehaviour
                 generatedHouses += Generate(Tile.House, 2, tileSize, new Vector2(generatedX, generatedY), 3, 0);
             }
         }
-        
+
+
+        int aux = 0;
+        for (aux = 0; aux <= y; aux++)
+        {
+            Instantiate(wall, new Vector3((float)aux - (x / 2), y / 2, 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)aux - (x / 2), -y / 2, 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)-x / 2, aux - (y / 2), 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)x / 2, aux - (y / 2), 0), Quaternion.identity);
+        }
+
     }
 
     public void GenerateAleatoriedPositions(ref int x, ref int y, ref float ale)
@@ -246,9 +256,9 @@ public class MapGenerator : MonoBehaviour
 
                         break;
                     case Tile.House:
-                        if (probW <.25f && probB < .80 && probH <.8f)
+                        if (probW <.25f && probB < .80 && probH <.25f)
                         {
-                            GenerateInfluence(tile, 2, finalPos);
+                            GenerateInfluence(tile, 4, finalPos);
 
                             GameObject c = Instantiate(obj, finalPos, Quaternion.identity);
                             instantiated++;
@@ -258,16 +268,6 @@ public class MapGenerator : MonoBehaviour
             }
 
             i++;
-        }
-
-
-        int aux = 0;
-        for (aux = 0; aux <= y; aux++)
-        {
-            Instantiate(wall, new Vector3((float) aux - (x / 2), y / 2, 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float) aux - (x / 2), - y / 2, 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float) - x / 2, aux - (y/2) , 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float) x / 2, aux - (y / 2), 0), Quaternion.identity);
         }
 
         return instantiated;
@@ -300,7 +300,14 @@ public class MapGenerator : MonoBehaviour
 
                 if (dist < radius && auxx < x && auxy < y && auxx >= 0&& auxy >= 0)
                 {
-                    tex.SetPixel(auxx, auxy, tex.GetPixel(auxx,auxy)+Color.Lerp(c, Color.black, dist / radius));
+                    if (dist < 2 && t != Tile.Wheat)
+                    {
+                        tex.SetPixel(auxx, auxy, tex.GetPixel(auxx, auxy) + Color.Lerp(c, Color.black, 0.0f));
+                    }
+                    else
+                    {
+                        tex.SetPixel(auxx, auxy, tex.GetPixel(auxx, auxy) + Color.Lerp(c, Color.black, dist / radius));
+                    }
                 }
             }
         }
