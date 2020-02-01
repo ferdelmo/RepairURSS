@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
-  player: {fileID: 8559466162518816147, guid: b1f90b51f99301243bbd6073f9288d56, type: 3}
-  maxTimeToReach: 1
+  player: {fileID: 0}
+  maxTimeToReach: 5
   maxTimeToReturn: 5
   speed: 5
   playerPosition: {x: 0, y: 0}
-  maxDistance: 20
+  maxDistance: 10
 --- !u!114 &1318956666362863632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ CircleCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -33,6 +33,8 @@ public class AIShoot : MonoBehaviour
 
     Movement player;
 
+    public Animator body;
+
     private FIFO velocities;
 
     private double t = 0;
@@ -95,8 +97,11 @@ public class AIShoot : MonoBehaviour
         Collider2D mycollider = transform.root.GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(projectileCollider, mycollider);
 
+
+
         project.GetComponent<Bullet>().velocity = bulletSpeed;
         project.GetComponent<Bullet>().damage = damage;
+        body.SetTrigger("throw");
     }
 
     private bool CanShoot()
