@@ -9,22 +9,14 @@ public class SickleMovement : MonoBehaviour
     public GameObject player;
     public float maxTimeToReach = 5.0f;
     public float maxTimeToReturn = 5.0f;
-    public float speed = 0.1f;
+    public float speed = 3.0f;
     private float strength = 1.0f;
     private bool sickleShooted = false;
     public Vector2 playerPosition;
-    private float distanceTravelled;
-    private bool dirRight = true;
-    private float timeTravelledToObjective = 0.0f;
     private float timeTravelledToPlayer = 0.0f;
 
-    private float destinationReached;
     private float playerReached;
-    private Vector2 sicklePosition;
-    private float range;
     private float downTime;
-    private float pressTime;
-    private float countDown = 1.0f;
 
     private bool keyPressed = false;
 
@@ -90,91 +82,6 @@ public class SickleMovement : MonoBehaviour
             playerReached = timeTravelledToPlayer / maxTimeToReturn;
             transform.position = Vector2.Lerp(transform.position, player.transform.position /*transform.parent.position*/, playerReached);
         }
-
-
-        
-
-        /*if (dirRight)
-            transform.Translate(Vector2.right * strength * Time.deltaTime);
-        else
-            transform.Translate(-Vector2.right * strength * Time.deltaTime);
-
-
-        if( sickleThrown)
-        {
-            while( transform.position != playerPosition)
-            {
-                
-            }
-        }
-        
-        if (transform.position.x >= 4.0f)
-        {
-            dirRight = false;
-        }
-
-        if (transform.position.x <= -4)
-        {
-            dirRight = true;
-        }*/
-        /*
-        Vector3 Destination = new Vector3(0, 0, 100);
-        Vector3 Traveller = new Vector3(0, 0, 0);
-        float step = 2.5f;
-        while (Traveller != Destination)
-        {
-            Traveller = Vector3.MoveTowards(Traveller, Destination, step);
-        }
-
-        while( Tra)
-        */
-        //transform.Translate(Traveller * strength * Time.deltaTime);
-        /*
-        distanceTravelled += Vector3.Distance(initialPosition, transform.position);
-
-        if (distanceTravelled < 100f)
-            transform.Translate(rotation * strength * Time.deltaTime);
-
-
-        if (distanceTravelled >= 100f)
-        {
-            transform.Translate(rotation * strength * Time.deltaTime);
-        }
-        */
-        /*
-        if ( timeToReturn < 0 && timeToReturn > -maxTimeToReturn)
-        {
-            transform.position += rotation * strength;
-            --timeToReturn;
-        } else if( timeToReturn <= -maxTimeToReturn)
-        {
-            timeToReturn = maxTimeToReturn;
-        } else if( timeToReturn < 0 && timeToReturn <= maxTimeToReturn)
-        {
-            transform.position -= rotation * strength;
-            ++timeToReturn;
-        }*/
-
-        /*
-        if( timeToReturn >= maxTimeToReturn)
-        {
-            transform.Translate(Vector3.left * strength * Time.deltaTime);
-        } else if( timeToReturn < maxTimeToReturn)
-        {
-            transform.Translate(Vector3.right * strength * Time.deltaTime);
-        }
-
-        if( timeToReturn > -maxTimeToReturn && )
-        {
-            transform.position -= rotation * strength;
-            timeToReturn++;
-        } else if( timeToReturn > maxTimeToReturn && timeToReturn < maxTimeToReturn * 100)
-        {
-            transform.position += rotation * strength;
-            timeToReturn--;
-        }*/
-
-
     }
 
     private void InitializeSliderValue()

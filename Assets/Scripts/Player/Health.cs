@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
         {
             health = health + amount;
         }
+        //Debug.Log("Healed: " + health + amount);
     }
 
     public void Damage(float damage)
