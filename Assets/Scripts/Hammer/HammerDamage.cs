@@ -19,6 +19,8 @@ public class HammerDamage : MonoBehaviour
         if (Input.GetButtonDown("Hammer"))
         {
             isPushedAttack = true;
+            animPlayer = this.GetComponent<Animator>();
+            animPlayer.SetTrigger("attackhammer");
         }
 
         if (Input.GetButtonUp("Hammer"))
@@ -32,8 +34,7 @@ public class HammerDamage : MonoBehaviour
     {
         if (isPushedAttack && other.gameObject.CompareTag("Enemy"))
         {
-            animPlayer = other.GetComponent<Animator>();
-            animPlayer.SetTrigger("attackhammer");
+            Debug.Log("bam");
             other.GetComponent<Health>().Damage(hammerDamage);
         }
     }

@@ -74,11 +74,11 @@ public class MapGenerator : MonoBehaviour
             float ale = 0;
             GenerateAleatoriedPositions(ref generatedX, ref generatedY, ref ale);
 
-            Debug.Log("BANK: " + generatedX + " - " + generatedY);
+            //Debug.Log("BANK: " + generatedX + " - " + generatedY);
 
             float prob = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).r;
 
-            Debug.Log("PROOOOOOB: " + prob);
+            //Debug.Log("PROOOOOOB: " + prob);
 
             if(prob == 0)
             {
@@ -96,11 +96,11 @@ public class MapGenerator : MonoBehaviour
             float ale = 0;
             GenerateAleatoriedPositions(ref generatedX, ref generatedY, ref ale);
 
-            Debug.Log("WHEAT: " + generatedX + " - " + generatedY);
+            //Debug.Log("WHEAT: " + generatedX + " - " + generatedY);
 
             float prob = tex.GetPixel(this.x/2+generatedX, this.y / 2 + generatedY).r;
 
-            Debug.Log("PROOOOOOB: " + prob);
+            //Debug.Log("PROOOOOOB: " + prob);
 
             if (prob<0.25f)
             {
@@ -117,14 +117,14 @@ public class MapGenerator : MonoBehaviour
             float ale = 0;
             GenerateAleatoriedPositions(ref generatedX, ref generatedY, ref ale);
 
-            Debug.Log("HOUSES: " + generatedX + " - " + generatedY);
+            //Debug.Log("HOUSES: " + generatedX + " - " + generatedY);
 
             float probB = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).r;
             float probH = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).b;
             float probW = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).g;
 
 
-            Debug.Log("PROOOOOOB: " + probB + ", " + probH + ", " + probW);
+            //Debug.Log("PROOOOOOB: " + probB + ", " + probH + ", " + probW);
 
             if (probB < 0.25f && probH<.8f && probW<.5f)
             {
