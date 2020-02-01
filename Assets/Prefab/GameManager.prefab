@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3016848967176720703}
   - component: {fileID: 6710572856286542221}
-  - component: {fileID: -2473693279579506705}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,8 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   country: {fileID: 0}
-  mapGenerator: {fileID: 2637386468943913007, guid: 32ba0085e456bc34db9e26f5db01bc32,
-    type: 3}
   level: 1
   numHouses: 0
   numWheats: 0
@@ -54,25 +51,3 @@ MonoBehaviour:
   wheats2generate: 5
   houses2generate: 5
   nextScene: 
---- !u!114 &-2473693279579506705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72400057272046913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3425cdd89e9dd743a7347625656e72f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficulty: 0
-  x: 21
-  y: 21
-  numHouses: 10
-  numWheat: 10
-  numBanks: 2
-  tex: {fileID: 0}
-  wheat: {fileID: 5187409694136352870, guid: 4ba552b38c1b0304eb866acbc019804e, type: 3}
-  bank: {fileID: 4050165858030275939, guid: cc447615c4f713343a393e19920ce87f, type: 3}
-  house: {fileID: 8043565080931601303, guid: b8476cde8af0e9446a0c4da51b796cb9, type: 3}
