@@ -49,7 +49,11 @@ public class Health : MonoBehaviour
         {
             health = health - damage;
         }
-        healthProgressBar.setCurrentFill( health / maxHealth);
+        if( this.gameObject.tag == "Player") //Not called for enemy
+        {
+            healthProgressBar.setCurrentFill(health / maxHealth);
+        }
+        
         //Debug.Log("damaged");
     }
 
