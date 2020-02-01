@@ -67,8 +67,18 @@ public class StartMenu : MonoBehaviour
         menu.SetActive(true);
     }
 
-    public void loadPlayScene()
+    public void loadPlayScene() 
     {
         SceneManager.LoadScene("SelectCountry");
+    }
+
+    public void loadCreditsScene()
+    {
+        SceneManager.LoadScene("CreditsScene");
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 }
