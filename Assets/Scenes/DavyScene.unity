@@ -220,7 +220,7 @@ MonoBehaviour:
   player: {fileID: 1223930404}
   maxTimeToReach: 5
   maxTimeToReturn: 5
-  speed: 10
+  speed: 20
   playerPosition: {x: 0, y: 0}
   maxDistance: 20
 --- !u!114 &174013279
