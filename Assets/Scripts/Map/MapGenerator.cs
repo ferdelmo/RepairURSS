@@ -26,7 +26,7 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tex = new Texture2D(x, y, TextureFormat.ARGB32, false);
+        /*tex = new Texture2D(x, y, TextureFormat.ARGB32, false);
 
         for(int i = 0; i < x; i++)
         {
@@ -40,7 +40,26 @@ public class MapGenerator : MonoBehaviour
 
         GenerateMap();
 
-        SaveTextureAsPNG(tex, Application.dataPath+"texture.png");
+        SaveTextureAsPNG(tex, Application.dataPath+"texture.png");*/
+    }
+
+    public void InitializeMap()
+    {
+        tex = new Texture2D(x, y, TextureFormat.ARGB32, false);
+
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < x; j++)
+            {
+                tex.SetPixel(i, j, Color.black);
+            }
+        }
+
+        Random.InitState(System.DateTime.Now.Hour + System.DateTime.Now.Second);
+
+        GenerateMap();
+
+        SaveTextureAsPNG(tex, Application.dataPath + "texture.png");
     }
 
     void GenerateMap()

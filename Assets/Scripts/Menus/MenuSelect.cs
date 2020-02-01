@@ -84,10 +84,7 @@ public class MenuSelect : MonoBehaviour
 
     public void SelectedFromMenu(CountryController c)
     {
-        ColorBlock cb = c.GetComponent<Button>().colors;
-        cb.normalColor = Color.red;
-        c.GetComponent<Button>().colors = cb;
-
-
+        //Debug.Log(c.country.countryName);
+        USSRManager.Instance.LoadNewLevel();
     }
 }
