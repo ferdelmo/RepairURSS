@@ -8,6 +8,8 @@ public class USSRManager : MonoBehaviour
 {
     public Country country;
 
+    private MapGenerator mapGenerator;
+
     private static USSRManager _instance;
 
     public float level = 1;
@@ -23,6 +25,8 @@ public class USSRManager : MonoBehaviour
     public int houses2generate = 5;
 
     public string nextScene;
+
+    private bool newLevelLoaded = false;
 
     public static USSRManager Instance { get { return _instance; } }
 
@@ -46,6 +50,21 @@ public class USSRManager : MonoBehaviour
         wheats2generate *= (int) level;
 
         DontDestroyOnLoad(this.gameObject);
+
+        mapGenerator = GetComponent<MapGenerator>();
+
+        mapGenerator.numBanks = banks2generate;
+        mapGenerator.numHouses = houses2generate;
+        mapGenerator.numWheat = wheats2generate;
+    }
+
+    private void Update()
+    {
+        if(( !newLevelLoaded && numHouses == houses2generate && numWheats == wheats2generate))
+        {
+            newLevelLoaded = true;
+            WonLevel();
+        }
     }
 
     public void IncrementNumWheats()
@@ -67,6 +86,12 @@ public class USSRManager : MonoBehaviour
     {
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
+        newLevelLoaded = false;
     }
 
+    public void LoadNewLevel()
+    {
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        mapGenerator.InitializeMap();
+    }
 }
