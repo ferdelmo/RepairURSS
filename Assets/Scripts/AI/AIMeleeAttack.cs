@@ -17,13 +17,18 @@ public class AIMeleeAttack : MonoBehaviour
     // Position of the player
     GameObject player;
 
+    AIMovement mov;
+
     Health health;
     // Start is called before the first frame update
 
-    float cadence = 1.0f;
+    public float cadence = 2.5f;
 
     // Time since last hit
     float lastHitTime = 0;
+
+    public Animator body;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -31,22 +36,26 @@ public class AIMeleeAttack : MonoBehaviour
         {
             health = player.GetComponent<Health>();
         }
+
+        mov = GetComponent<AIMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        lastHitTime += Time.deltaTime;
         Vector2 dir = player.transform.position - transform.position;
         if (distance >= dir.magnitude)
         {
-            Debug.DrawLine(transform.position, dir, Color.green, 2.5f);
             if(lastHitTime > cadence)
             {
-                health.Damage(damage);
+                Debug.Log("Attack");
+                //health.Damage(damage);
                 lastHitTime = 0;
+                mov.StopMoving(4.0f);
+                body.SetTrigger("attack");
             }
-
-            lastHitTime += Time.deltaTime;
         }
     }
 
