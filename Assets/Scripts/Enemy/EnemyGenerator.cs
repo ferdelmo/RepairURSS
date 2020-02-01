@@ -26,7 +26,7 @@ public class EnemyGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(previousSpawnTime >= spawnTime)
+        if (previousSpawnTime >= spawnTime)
         {
             if (Random.Range(0.0f, 1.0f) <= meleeProbability)
             {

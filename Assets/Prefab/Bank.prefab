@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 8428363231788923078, guid: a3c2de30719d53041a43066928cb002d, type: 3}
-  - {fileID: 8861891452719740964, guid: c3498ca7614b53540b1e8e2de220f3ad, type: 3}
+  - {fileID: 364931764793164367, guid: 16bce655696b79c409a69b6acc50495c, type: 3}
   meleeProbability: 0.5
   spawnTime: 5
   previousSpawnTime: 0
