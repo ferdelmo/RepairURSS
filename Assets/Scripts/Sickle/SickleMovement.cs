@@ -21,7 +21,7 @@ public class SickleMovement : MonoBehaviour
 
     private bool keyPressed = false;
 
-
+    private Collider2D sickleCollider;
     private float currentDistance = 0.0f;
     private float realDistance;
     public float maxDistance = 20.0f;
@@ -29,7 +29,7 @@ public class SickleMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        sickleCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -37,6 +37,7 @@ public class SickleMovement : MonoBehaviour
     {
         if( Input.GetButtonDown( "Sickle") && !keyPressed)
         {
+            sickleCollider.enabled = false;
             InitializeSliderValue();
             downTime = Time.time;       
             keyPressed = true;
@@ -45,11 +46,13 @@ public class SickleMovement : MonoBehaviour
         //Hacer que el slider se actualice con el tiempo hasta que llegue a 1
         if (keyPressed && !sickleShooted)
         {
-            SetSliderValue();
+            float tiempoPasado = Time.time - downTime;
+            SetSliderValue( tiempoPasado);
         }
 
         if ( Input.GetButtonUp( "Sickle")  && !sickleShooted)
         {
+            sickleCollider.enabled = true;
             float tiempoPasado = Time.time - downTime;
             if( tiempoPasado < 0.25f)
             {
@@ -105,9 +108,12 @@ public class SickleMovement : MonoBehaviour
         slider.value = 0.0f;
     }
 
-    private void SetSliderValue()
+    private void SetSliderValue( float tiempoPasado)
     {
-        slider.gameObject.SetActive( true);
+        if( tiempoPasado > 0.25f)
+        {
+            slider.gameObject.SetActive(true);
+        }
         slider.value += 0.02f;
     }
 
