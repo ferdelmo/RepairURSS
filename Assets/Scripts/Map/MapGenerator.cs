@@ -210,7 +210,7 @@ public class MapGenerator : MonoBehaviour
                     case Tile.Bank:
                         if (probB == 0)
                         {
-                            GenerateInfluence(tile, 5, finalPos);
+                            GenerateInfluence(tile, 7.5f, finalPos);
 
                             GameObject c = Instantiate(obj, finalPos, Quaternion.identity);
                             instantiated++;

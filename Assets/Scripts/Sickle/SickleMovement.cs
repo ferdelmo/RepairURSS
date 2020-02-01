@@ -57,7 +57,7 @@ public class SickleMovement : MonoBehaviour
             if( tiempoPasado < 0.25f)
             {
                 meleeAttack = true;
-                Debug.Log("Melee attack");
+                //Debug.Log("Melee attack");
                 realDistance = 0.0f;
             } else
             {
@@ -112,6 +112,7 @@ public class SickleMovement : MonoBehaviour
     {
         if( tiempoPasado > 0.25f)
         {
+            //Debug.Log(tiempoPasado);
             slider.gameObject.SetActive(true);
         }
         slider.value += 0.02f;

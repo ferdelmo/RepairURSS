@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class USSRManager : MonoBehaviour
@@ -12,9 +13,15 @@ public class USSRManager : MonoBehaviour
 
     public int numHouses = 0;
 
-    public int numBanks = 0;
-
     public int numWheats = 0;
+
+    public int banks2generate = 5;
+
+    public int wheats2generate = 5;
+
+    public int houses2generate = 5;
+
+    public string nextScene;
 
     public static USSRManager Instance { get { return _instance; } }
 
@@ -28,17 +35,21 @@ public class USSRManager : MonoBehaviour
             _instance = this;
         }
 
+        numHouses = 0;
+        numWheats = 0;
+
+        banks2generate *= (int) level;
+
+        houses2generate *= (int) level;
+
+        wheats2generate *= (int) level;
+
         DontDestroyOnLoad(this.gameObject);
     }
 
     public void IncrementNumWheats()
     {
         numWheats++;
-    }
-
-    public void IncrementNumBanks()
-    {
-        numBanks++;
     }
 
     public void IncrementNumHouses()
@@ -48,11 +59,12 @@ public class USSRManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-
+        SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
     }
 
     public void WonLevel()
     {
+        SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
     }
 

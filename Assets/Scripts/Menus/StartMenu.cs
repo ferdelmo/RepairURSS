@@ -15,6 +15,8 @@ public class StartMenu : MonoBehaviour
 
     public GameObject menu;
 
+    public GameObject credits;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,9 +74,16 @@ public class StartMenu : MonoBehaviour
         SceneManager.LoadScene("SelectCountry");
     }
 
-    public void loadCreditsScene()
+    public void Credits()
     {
-        SceneManager.LoadScene("CreditsScene");
+        menu.SetActive(false);
+        credits.SetActive(true);
+    }
+
+    public void ShowMenu()
+    {
+        menu.SetActive(true);
+        credits.SetActive(false);
     }
 
     public void quit()
