@@ -46,8 +46,9 @@ public class SickleMovement : MonoBehaviour
         //Hacer que el slider se actualice con el tiempo hasta que llegue a 1
         if (keyPressed && !sickleShooted)
         {
+            
             float tiempoPasado = Time.time - downTime;
-            SetSliderValue( tiempoPasado);
+            SetSliderValue( tiempoPasado);           
         }
 
         if ( Input.GetButtonUp( "Sickle")  && !sickleShooted)
@@ -72,11 +73,14 @@ public class SickleMovement : MonoBehaviour
             HideSlider();
             sickleShooted = true;
             keyPressed = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         if ( sickleShooted)
-        {    
-            if( realDistance != 0)
+        {
+            transform.Rotate(0, 0, 300 * Time.deltaTime);
+            if ( realDistance != 0)
             {
                 transform.position += player.transform.up * speed * Time.deltaTime;
             }
@@ -92,6 +96,8 @@ public class SickleMovement : MonoBehaviour
                 if (playerReached >= 1.0f || ((player.transform.position - transform.position).magnitude < 1.0f))
                 {
                     //Debug.Log("jugador alcanzado!!");
+                    gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     sickleShooted = false;
                 }
             }                        
@@ -122,5 +128,4 @@ public class SickleMovement : MonoBehaviour
     {
         slider.gameObject.SetActive( false);
     }
-
 }
