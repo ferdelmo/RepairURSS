@@ -71,7 +71,7 @@ public class SickleMovement : MonoBehaviour
                 playerReached = timeTravelledToPlayer / maxTimeToReturn;
                 transform.position = Vector2.Lerp(transform.position, player.transform.position, playerReached);
 
-                if (playerReached >= 1.0f)
+                if (playerReached >= 1.0f || ((player.transform.position - transform.position).magnitude < 1.0f))
                 {
                     Debug.Log("jugador alcanzado!!");
                     sickleShooted = false;
