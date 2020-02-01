@@ -15,22 +15,26 @@ public class ConstructHouse : MonoBehaviour
     private float startTime;
     private bool isOnTrigger;
     private Camera cam;
+    private Vector3 positionOutCanvas = new Vector3(1050, 0, 0 );
 
     void Start()
     {
+        GameObject progressBars = GameObject.FindWithTag("ProgressBuilding");
+        if (progressBars != null)
+        {
+            this.progress = progressBars.GetComponent<ProgressBar>();
+        }
         isOnTrigger = false;
         if (isConstructed)
         {
             this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
         }
 
-        progress.gameObject.SetActive(false);
         cam = Camera.main;
     }
 
     void Update()
     {
-
         if (!isConstructed)
         {
             this.GetComponent<SpriteRenderer>().sprite = damagedHouse; 
@@ -43,11 +47,8 @@ public class ConstructHouse : MonoBehaviour
 
         if (isOnTrigger && Input.GetButton("Hammer") && !isConstructed)
         {
-            //if (Input.GetButton("Hammer"))
-            //{
-                animPlayer.SetTrigger("attackhammer");
-            //}
             progress.gameObject.SetActive(true);
+            animPlayer.SetTrigger("attackhammer");
 
             Vector3 screenPos = cam.WorldToScreenPoint(this.gameObject.transform.position);
             progress.gameObject.transform.position = screenPos;
@@ -59,6 +60,8 @@ public class ConstructHouse : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
                 isConstructed = true;
                 USSRManager.Instance.IncrementNumHouses();
+                progress.gameObject.SetActive(false);
+                //progress.gameObject.transform.position = positionOutCanvas;
             }
         }
 
@@ -67,6 +70,7 @@ public class ConstructHouse : MonoBehaviour
             startTime = 0;
             progress.setCurrentFill(0);
             progress.gameObject.SetActive(false);
+            //progress.gameObject.transform.position = positionOutCanvas;
         }
     }
 

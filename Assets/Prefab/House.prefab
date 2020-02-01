@@ -73,9 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToConstruct: 1
-  progress: {fileID: 5996695578591899100, guid: e9378e01b4ca68440b0e5ddb576d02d9,
-    type: 3}
-  constructedHouse: {fileID: 21300000, guid: 9e768dde8d67fd04598e1ec4d5ea25ad, type: 3}
+  progress: {fileID: 0}
+  constructedHouse: {fileID: 21300000, guid: 9cf25459b1e53ca4980e52de8a2214de, type: 3}
   damagedHouse: {fileID: 21300000, guid: 9e768dde8d67fd04598e1ec4d5ea25ad, type: 3}
   isConstructed: 0
 --- !u!212 &8043565080931601291
