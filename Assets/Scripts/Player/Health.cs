@@ -59,6 +59,6 @@ public class Health : MonoBehaviour
 
     void OnDeath()
     {
-        Debug.Log("Ha muerto");
+        Debug.Log("Ha muerto: " + this.gameObject.tag);
     }
 }
