@@ -26,6 +26,8 @@ public class USSRManager : MonoBehaviour
 
     public string nextScene;
 
+    private bool newLevelLoaded = false;
+
     public static USSRManager Instance { get { return _instance; } }
 
     private void Start()
@@ -56,6 +58,15 @@ public class USSRManager : MonoBehaviour
         mapGenerator.numWheat = wheats2generate;
     }
 
+    private void Update()
+    {
+        if (( !newLevelLoaded && numHouses == houses2generate && numWheats == wheats2generate))
+        {
+            newLevelLoaded = true;
+            WonLevel();
+        }
+    }
+
     public void IncrementNumWheats()
     {
         numWheats++;
@@ -73,13 +84,15 @@ public class USSRManager : MonoBehaviour
 
     public void WonLevel()
     {
+        nextScene = "SelectCountry";
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
+        newLevelLoaded = false;
     }
 
     public void LoadNewLevel()
     {
-        SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level" + level, LoadSceneMode.Single);
         mapGenerator.InitializeMap();
     }
 }

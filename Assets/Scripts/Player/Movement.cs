@@ -7,6 +7,9 @@ public class Movement : MonoBehaviour
     //Velocidad del personaje
     public float velocity = 10.0f;
 
+    public Animator body;
+    public Animator legs;
+
     Vector2 direction;
     void Start()
     {
@@ -22,6 +25,21 @@ public class Movement : MonoBehaviour
         //Debug.Log("Mov: " + directionMov);
         //Debug.Log("Aim: " + directionAim);
 
+        if (directionMov.magnitude > 0.1)
+        {
+            body.SetBool("move", true);
+            legs.SetBool("move", true);
+
+            float rot_z = OrientDirection(directionMov); 
+            legs.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, rot_z+90);
+        }
+        else
+        {
+            body.SetBool("move", false);
+            legs.SetBool("move", false);
+            directionMov = Vector2.zero;
+        }
+
         directionMov.Normalize();
         directionAim.Normalize();
 
@@ -31,6 +49,8 @@ public class Movement : MonoBehaviour
 
         //Mover al personaje
         transform.position = pos + directionMov * velocity * Time.deltaTime;
+
+
 
         Vector2 newPos = transform.position;
 
