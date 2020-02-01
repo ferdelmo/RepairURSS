@@ -26,10 +26,14 @@ public class SickleMovement : MonoBehaviour
     private float realDistance;
     public float maxDistance = 20.0f;
     public const float maxPressedTime = 2.0f;
+
+    public Animator playerAnim;
     // Start is called before the first frame update
     void Start()
     {
         sickleCollider = GetComponent<CircleCollider2D>();
+
+        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,7 +65,10 @@ public class SickleMovement : MonoBehaviour
                 Debug.Log("Melee attack");
                 realDistance = 0.0f;
                 gameObject.GetComponent<CircleCollider2D>().enabled = true;
-                StartCoroutine(MeleeAttack( 0.25f));
+                playerAnim.SetTrigger("attacksickle");
+                gameObject.transform.position += Vector3.up * 0.75f;
+                StartCoroutine(MeleeAttack( 0.5f));
+                return;
             } else
             {
                 meleeAttack = false;
@@ -83,7 +90,7 @@ public class SickleMovement : MonoBehaviour
             }        
         }
 
-        if ( sickleShooted)
+        if ( sickleShooted && !meleeAttack)
         {
             transform.Rotate(0, 0, 300 * Time.deltaTime);
             if( realDistance != 0)
@@ -107,7 +114,7 @@ public class SickleMovement : MonoBehaviour
                     sickleShooted = false;
                 }
             }                        
-        } else
+        } else if(!meleeAttack)
         {
             timeTravelledToPlayer += Time.deltaTime;
             playerReached = timeTravelledToPlayer / maxTimeToReturn;
@@ -140,7 +147,8 @@ public class SickleMovement : MonoBehaviour
         yield return new WaitForSeconds(duration);
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        sickleShooted = false;
+        meleeAttack = false;
+        gameObject.transform.position -= Vector3.up * 0.75f;
     }
 }
 
