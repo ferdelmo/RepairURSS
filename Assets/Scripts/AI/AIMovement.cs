@@ -13,26 +13,54 @@ public class AIMovement : MonoBehaviour
     // Position of the player
     public Transform player;
 
+    public Animator body;
+    public Animator legs;
+
+    bool mov = true;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
     }
 
+    public void StopMoving(float duration)
+    {
+        mov = false;
+        body.SetBool("move", false);
+        legs.SetBool("move", false);
+        StartCoroutine(Stop(duration));
+    }
+
+    IEnumerator Stop(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+    }
+
     // Update is called once per frame
     void Update()
     {
-
-        Vector2 dir = player.position - transform.position;
-        if (dir.magnitude > distance)
+        if (mov)
         {
+            Vector2 dir = player.position - transform.position;
+            if (dir.magnitude > distance)
+            {
+                dir.Normalize();
+                Vector2 pos = transform.position;
+
+                // mover al enemigo
+                transform.position = pos + dir * speed * Time.deltaTime;
+                body.SetBool("move", true);
+                legs.SetBool("move", true);
+            }
+            else
+            {
+
+            }
             dir.Normalize();
-            Vector2 pos = transform.position;
-            transform.position = pos + dir * speed * Time.deltaTime;
+            float angle = Movement.OrientDirection(dir);
+            transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         }
-        dir.Normalize();
-        float angle = Movement.OrientDirection(dir);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
 }

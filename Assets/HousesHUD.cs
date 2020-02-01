@@ -5,23 +5,28 @@ using UnityEngine.UI;
 
 public class HousesHUD : MonoBehaviour
 {
-    private Text wheatText;
+    private Text houseText;
+
+    private int currentHouses;
+    private int totalHouses;
 
     // Start is called before the first frame update
     void Start()
     {
-        wheatText = GetComponent<Text>();
-        //totalWheat = levelManager.totalWheat;
+        currentHouses = USSRManager.Instance.numHouses;
+                
+        Debug.Log("house TEXT: " + houseText);
+    }
+
+    private void Awake()
+    {
+        houseText = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public void updateText()
-    {
-        //wheatText.text = "Wheat: " + actualWheat + "/" + totalWheat;
+        totalHouses = USSRManager.Instance.houses2generate;
+        houseText.text = "houseText: " + currentHouses + "/" + totalHouses;
     }
 }
