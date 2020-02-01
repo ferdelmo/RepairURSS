@@ -26,11 +26,8 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-        tex = new Texture2D(x, y, TextureFormat.ARGB32, false);
-=======
+
         Country country = USSRManager.Instance.country;
->>>>>>> be7b1d4496dc2642137120839e2621c27da3fb4b
 
         numHouses = 10;
 
@@ -40,11 +37,7 @@ public class MapGenerator : MonoBehaviour
 
         // generar dependiendo del countrya
 
-<<<<<<< HEAD
-        SaveTextureAsPNG(tex, Application.dataPath+"texture.png");
-=======
         InitializeMap();
->>>>>>> be7b1d4496dc2642137120839e2621c27da3fb4b
     }
 
     public void InitializeMap()
