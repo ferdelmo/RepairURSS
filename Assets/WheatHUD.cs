@@ -13,7 +13,7 @@ public class WheatHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentWheats = USSRManager.Instance.numWheats;            
+        totalWheats = USSRManager.Instance.wheats2generate;
     }
 
     private void Awake()
@@ -24,7 +24,7 @@ public class WheatHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalWheats = USSRManager.Instance.wheats2generate;
+        currentWheats = USSRManager.Instance.numWheats;
         wheatText.text = "Wheat: " + currentWheats + "/" + totalWheats;
     }
 

@@ -41,7 +41,6 @@ public class EnemyGenerator : MonoBehaviour
                                 spawnPoint.rotation);
                 enemy.GetComponent<AIShoot>().damage =
                     enemy.GetComponent<AIShoot>().baseDamage * USSRManager.Instance.level;
-
             }
             previousSpawnTime = 0.0f;
         }

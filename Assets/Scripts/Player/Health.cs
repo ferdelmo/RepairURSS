@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
 
     public void Damage(float damage)
     {
-        Debug.Log("Daños");
+        //Debug.Log("Daños");
         if(health - damage < 0)
         {
             health = 0;  
@@ -59,6 +59,6 @@ public class Health : MonoBehaviour
 
     void OnDeath()
     {
-        Debug.Log("Ha muerto");
+        Debug.Log("Ha muerto: " + this.gameObject.tag);
     }
 }

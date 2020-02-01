@@ -16,12 +16,16 @@ public class AIMovement : MonoBehaviour
     public Animator body;
     public Animator legs;
 
+    Rigidbody2D rigid;
+
     bool mov = true;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     public void StopMoving(float duration)
@@ -35,6 +39,7 @@ public class AIMovement : MonoBehaviour
     IEnumerator Stop(float duration)
     {
         yield return new WaitForSeconds(duration);
+        mov = true;
     }
 
     // Update is called once per frame
@@ -49,13 +54,17 @@ public class AIMovement : MonoBehaviour
                 Vector2 pos = transform.position;
 
                 // mover al enemigo
-                transform.position = pos + dir * speed * Time.deltaTime;
+                // transform.position = pos + dir * speed * Time.deltaTime;
+
+                rigid.MovePosition(pos + dir * speed * Time.deltaTime);
                 body.SetBool("move", true);
                 legs.SetBool("move", true);
             }
             else
             {
 
+                body.SetBool("move", false);
+                legs.SetBool("move", false);
             }
             dir.Normalize();
             float angle = Movement.OrientDirection(dir);

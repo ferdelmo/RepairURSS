@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8043565080931601302}
   - component: {fileID: 8043565080931601288}
   - component: {fileID: 8043565080931601291}
-  - component: {fileID: 8043565080931601290}
+  - component: {fileID: 8417067608943517145}
+  - component: {fileID: 7761649989948615994}
   m_Layer: 0
   m_Name: House
   m_TagString: House
@@ -51,14 +52,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.125, y: 3.1875}
     newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
 --- !u!114 &8043565080931601288
 MonoBehaviour:
@@ -73,9 +74,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToConstruct: 1
-  progress: {fileID: 0}
-  constructedHouse: {fileID: 21300000, guid: 9cf25459b1e53ca4980e52de8a2214de, type: 3}
-  damagedHouse: {fileID: 21300000, guid: 9e768dde8d67fd04598e1ec4d5ea25ad, type: 3}
+  progress: {fileID: 5996695578591899100, guid: e9378e01b4ca68440b0e5ddb576d02d9,
+    type: 3}
+  constructedHouse: {fileID: -8078966772632430244, guid: 441dbc22c3c3fbf4db65f66f6baf575f,
+    type: 3}
+  damagedHouse: {fileID: -2639815033004070117, guid: 441dbc22c3c3fbf4db65f66f6baf575f,
+    type: 3}
   isConstructed: 0
 --- !u!212 &8043565080931601291
 SpriteRenderer:
@@ -115,8 +119,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9e768dde8d67fd04598e1ec4d5ea25ad, type: 3}
-  m_Color: {r: 0, g: 0.016850948, b: 1, a: 1}
+  m_Sprite: {fileID: -8078966772632430244, guid: 441dbc22c3c3fbf4db65f66f6baf575f,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +131,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8043565080931601290
+--- !u!61 &8417067608943517145
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,12 +148,33 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.125, y: 3.1875}
     newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.125, y: 3.1875}
   m_EdgeRadius: 0
+--- !u!50 &7761649989948615994
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043565080931601303}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
