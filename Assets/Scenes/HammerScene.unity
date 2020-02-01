@@ -294,8 +294,8 @@ Transform:
   m_LocalPosition: {x: 2.11, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 371197112}
   - {fileID: 381390289}
+  - {fileID: 371197112}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -350,7 +350,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 295305044}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &371197113
 Animator:
@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 381390289}
   - component: {fileID: 381390293}
   - component: {fileID: 381390290}
+  - component: {fileID: 381390291}
   m_Layer: 0
   m_Name: body
   m_TagString: Player
@@ -451,7 +452,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 295305044}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &381390290
 Animator:
@@ -463,7 +464,7 @@ Animator:
   m_GameObject: {fileID: 381390288}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6eb02b7b9c42b3040a721904d6aea575, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5a6e7672862e35d42b83676b4c634f3f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -472,6 +473,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &381390291
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381390288}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!212 &381390293
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -906,6 +923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  healthProgressBar: {fileID: 1143612993}
 --- !u!1 &2005243075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1138,18 @@ PrefabInstance:
       propertyPath: progress
       value: 
       objectReference: {fileID: 1143612993}
+    - target: {fileID: 8043565080931601288, guid: b8476cde8af0e9446a0c4da51b796cb9,
+        type: 3}
+      propertyPath: constructedHouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c454098bd46d6c4aa4d7c4053b1634f,
+        type: 3}
+    - target: {fileID: 8043565080931601288, guid: b8476cde8af0e9446a0c4da51b796cb9,
+        type: 3}
+      propertyPath: damagedHouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 1934906e83784854f80177c1a890bc68,
+        type: 3}
     - target: {fileID: 8043565080931601289, guid: b8476cde8af0e9446a0c4da51b796cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
