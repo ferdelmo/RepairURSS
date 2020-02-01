@@ -40,8 +40,13 @@ public class ConstructHouse : MonoBehaviour
          {
             startTime = Time.time;
         }
+
         if (isOnTrigger && Input.GetButton("Hammer") && !isConstructed)
         {
+            //if (Input.GetButton("Hammer"))
+            //{
+                animPlayer.SetTrigger("attackhammer");
+            //}
             progress.gameObject.SetActive(true);
 
             Vector3 screenPos = cam.WorldToScreenPoint(this.gameObject.transform.position);
@@ -51,7 +56,6 @@ public class ConstructHouse : MonoBehaviour
             progress.setCurrentFill(lapsedTime / timeToConstruct);
             if (Time.time - startTime >= timeToConstruct)
             {
-                Debug.Log("Constructed");
                 this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
                 isConstructed = true;
                 USSRManager.Instance.IncrementNumHouses();
@@ -72,8 +76,6 @@ public class ConstructHouse : MonoBehaviour
         {
             isOnTrigger = true;
             animPlayer = other.GetComponent<Animator>();
-            animPlayer.SetTrigger("attackhammer");
-            //progress.gameObject.transform.Rotate(new Vector3(0, 0, this.gameObject.transform.rotation.z-180 ));
         }
     }
 
@@ -82,7 +84,6 @@ public class ConstructHouse : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             isOnTrigger = false;
-            //progress.gameObject.transform.rotation = this.gameObject.transform.rotation;
         }
     }
 }
