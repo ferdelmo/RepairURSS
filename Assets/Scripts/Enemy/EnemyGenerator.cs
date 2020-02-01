@@ -37,11 +37,10 @@ public class EnemyGenerator : MonoBehaviour
             }
             else
             {
-                /*GameObject enemy = Instantiate(enemies[1], spawnPoint.position,
+                GameObject enemy = Instantiate(enemies[1], spawnPoint.position,
                                 spawnPoint.rotation);
                 enemy.GetComponent<AIShoot>().damage =
                     enemy.GetComponent<AIShoot>().baseDamage * USSRManager.Instance.level;
-                    */
             }
             previousSpawnTime = 0.0f;
         }

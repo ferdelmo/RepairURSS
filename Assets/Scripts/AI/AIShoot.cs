@@ -71,12 +71,16 @@ public class AIShoot : MonoBehaviour
         Vector2 finalPos = xow + vw * (float)t;
 
         Vector2 orient = (finalPos - myPos);
+
+
         orient.Normalize();
 
         //Debug.Log(orient);
 
+
+
         float angle = Movement.OrientDirection(orient);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle+90);
 
         timeLastShoot += Time.deltaTime;
 
