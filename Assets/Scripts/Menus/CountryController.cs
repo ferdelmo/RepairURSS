@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CountryController : MonoBehaviour
 {
@@ -16,5 +17,15 @@ public class CountryController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Select()
+    {
+        GetComponent<Image>().color = Color.red;
+    }
+
+    public void UnSelect()
+    {
+        GetComponent<Image>().color = Color.white;
     }
 }
