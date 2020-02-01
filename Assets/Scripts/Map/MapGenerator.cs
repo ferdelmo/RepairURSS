@@ -21,6 +21,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject wheat;
     public GameObject bank;
     public GameObject house;
+    public GameObject wall;
 
     Vector2 tileSize = new Vector2(1, 1);
     // Start is called before the first frame update
@@ -130,6 +131,7 @@ public class MapGenerator : MonoBehaviour
                 generatedHouses += Generate(Tile.House, 2, tileSize, new Vector2(generatedX, generatedY), 3, 0);
             }
         }
+        
     }
 
     public void GenerateAleatoriedPositions(ref int x, ref int y, ref float ale)
@@ -256,6 +258,16 @@ public class MapGenerator : MonoBehaviour
             }
 
             i++;
+        }
+
+
+        int aux = 0;
+        for (aux = 0; aux <= y; aux++)
+        {
+            Instantiate(wall, new Vector3((float) aux - (x / 2), y / 2, 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float) aux - (x / 2), - y / 2, 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float) - x / 2, aux - (y/2) , 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float) x / 2, aux - (y / 2), 0), Quaternion.identity);
         }
 
         return instantiated;
