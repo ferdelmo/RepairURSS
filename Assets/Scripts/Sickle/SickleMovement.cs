@@ -34,7 +34,7 @@ public class SickleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( Input.GetKeyDown( KeyCode.L) && !keyPressed)
+        if( Input.GetButtonDown( "Sickle") && !keyPressed)
         {
             InitializeSliderValue();
             downTime = Time.time;       
@@ -46,7 +46,7 @@ public class SickleMovement : MonoBehaviour
             SetSliderValue();
         }
 
-        if( Input.GetKeyUp( KeyCode.L) && !sickleShooted)
+        if( Input.GetButtonUp( "Sickle")  && !sickleShooted)
         {
             float tiempoPasado = Time.time - downTime;
             strength = tiempoPasado / maxTimeToReach;
@@ -71,8 +71,9 @@ public class SickleMovement : MonoBehaviour
                 playerReached = timeTravelledToPlayer / maxTimeToReturn;
                 transform.position = Vector2.Lerp(transform.position, player.transform.position, playerReached);
 
-                if (playerReached >= 1)
+                if (playerReached >= 1.0f)
                 {
+                    Debug.Log("jugador alcanzado!!");
                     sickleShooted = false;
                 }
             }                        
@@ -91,11 +92,8 @@ public class SickleMovement : MonoBehaviour
 
     private void SetSliderValue()
     {
-        if( keyPressed)
-        {
-            slider.gameObject.SetActive( true);
-            slider.value += 0.01f;
-        }       
+        slider.gameObject.SetActive( true);
+        slider.value += 0.02f;
     }
 
     private void HideSlider()
