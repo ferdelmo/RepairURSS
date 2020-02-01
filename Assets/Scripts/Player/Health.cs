@@ -66,7 +66,7 @@ public class Health : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         } else if( gameObject.tag == "Enemy")
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         
     }
