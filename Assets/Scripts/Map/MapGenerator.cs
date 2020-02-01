@@ -26,6 +26,7 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         Country country = USSRManager.Instance.country;
 
         numHouses = 10;

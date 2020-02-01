@@ -13,7 +13,11 @@ GameObject:
   - component: {fileID: 1318956666362863633}
   - component: {fileID: 1318956666362863632}
   - component: {fileID: 1318956666362863662}
+<<<<<<< HEAD
+  - component: {fileID: 9139961747566602652}
+=======
   - component: {fileID: 1346625067}
+>>>>>>> be7b1d4496dc2642137120839e2621c27da3fb4b
   m_Layer: 0
   m_Name: Sickle
   m_TagString: Sickle
@@ -137,14 +141,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
+--- !u!58 &9139961747566602652
+=======
 --- !u!58 &1346625067
+>>>>>>> be7b1d4496dc2642137120839e2621c27da3fb4b
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318956666362863636}
+<<<<<<< HEAD
+  m_Enabled: 1
+=======
   m_Enabled: 0
+>>>>>>> be7b1d4496dc2642137120839e2621c27da3fb4b
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
 
     public void Damage(float damage)
     {
-        Debug.Log("Daños");
+        //Debug.Log("Daños");
         if(health - damage < 0)
         {
             health = 0;  
