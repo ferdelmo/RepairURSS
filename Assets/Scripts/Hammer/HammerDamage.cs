@@ -6,6 +6,7 @@ public class HammerDamage : MonoBehaviour
 {
     public float hammerDamage;
     private bool isPushedAttack;
+    private Animator animPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,8 @@ public class HammerDamage : MonoBehaviour
     {
         if (isPushedAttack && other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Dam");
+            animPlayer = other.GetComponent<Animator>();
+            animPlayer.SetTrigger("attackhammer");
             other.GetComponent<Health>().Damage(hammerDamage);
         }
     }

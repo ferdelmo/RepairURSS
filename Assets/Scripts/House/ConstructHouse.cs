@@ -10,6 +10,8 @@ public class ConstructHouse : MonoBehaviour
     public Sprite constructedHouse;
     public Sprite damagedHouse;
     public bool isConstructed = false;
+
+    private Animator animPlayer;
     private float startTime;
     private bool isOnTrigger;
     private Camera cam;
@@ -40,7 +42,6 @@ public class ConstructHouse : MonoBehaviour
         }
         if (isOnTrigger && Input.GetButton("Hammer") && !isConstructed)
         {
-            Debug.Log("enter");
             progress.gameObject.SetActive(true);
 
             Vector3 screenPos = cam.WorldToScreenPoint(this.gameObject.transform.position);
@@ -70,6 +71,8 @@ public class ConstructHouse : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isOnTrigger = true;
+            animPlayer = other.GetComponent<Animator>();
+            animPlayer.SetTrigger("attackhammer");
             //progress.gameObject.transform.Rotate(new Vector3(0, 0, this.gameObject.transform.rotation.z-180 ));
         }
     }
