@@ -30,7 +30,7 @@ public class USSRManager : MonoBehaviour
 
     public static USSRManager Instance { get { return _instance; } }
 
-    private void Start()
+    private void Awake()
     {
         if (_instance != null && _instance != this)
         {
