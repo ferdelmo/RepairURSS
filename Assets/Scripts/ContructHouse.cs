@@ -6,12 +6,14 @@ public class ContructHouse : MonoBehaviour
 {
 
     public int timeToConstruct;
+    public ProgressBar progress;
     private float startTime;
     private bool isOnTrigger;
 
     void Start()
     {
         isOnTrigger = false;
+        progress.gameObject.SetActive(false);
     }
 
     void Update()
@@ -22,6 +24,12 @@ public class ContructHouse : MonoBehaviour
          }
         if (Input.GetButton("Fire1"))
         {
+            progress.gameObject.SetActive(true);
+            float lapsedTime = Time.time - startTime;
+            Debug.Log((lapsedTime  / timeToConstruct));
+            //ProgressBar progress = GetComponent<ProgressBar>();
+            progress.setCurrentFill(lapsedTime / timeToConstruct);
+            //setCurrentFill(lapsedTime*100/ timeToConstruct);
             if (isOnTrigger && Time.time - startTime >= timeToConstruct)
             {
                 Debug.Log("Constructed");
@@ -31,7 +39,9 @@ public class ContructHouse : MonoBehaviour
         if (Input.GetButtonUp("hammer"))
          {
             startTime = 0;
-         }
+            progress.setCurrentFill(0);
+            progress.gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
