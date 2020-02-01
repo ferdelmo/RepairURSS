@@ -20,6 +20,9 @@ public class AIShoot : MonoBehaviour
     //Damage de las balas que dispara
     public float damage = 5;
 
+    //Damage de las balas que dispara
+    public float baseDamage = 5;
+
     //Number in the position on the table
     public int N = 10;
 

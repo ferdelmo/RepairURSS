@@ -53,6 +53,7 @@ public class ConstructHouse : MonoBehaviour
                 Debug.Log("Constructed");
                 this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
                 isConstructed = true;
+                USSRManager.Instance.IncrementNumHouses();
             }
         }
 

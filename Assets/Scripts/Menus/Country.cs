@@ -7,17 +7,23 @@ public class Country : ScriptableObject
 {
     public string countryName;
 
-    //in Millions
+    // in Millions
     public float population;
-    //in km^2
+    // in km^2
     public float size;
 
     public float difficulty;
-
+    
+    public float GetDifficulty()
+    {
+        return USSRManager.Instance.level;
+    }
 
     public float GetEnemyDamageMelee()
     {
         float damage = 5;
+
+        damage = damage * USSRManager.Instance.level;
 
         return damage;
     }
@@ -26,6 +32,8 @@ public class Country : ScriptableObject
     {
         float damage = 5;
 
+        damage = damage * USSRManager.Instance.level;
+
         return damage;
     }
 
@@ -33,12 +41,16 @@ public class Country : ScriptableObject
     {
         int houses = 10;
 
+        houses = houses * (int) USSRManager.Instance.level;
+
         return houses;
     }
 
     public int GetWheatObjetive()
     {
         int wheat = 10;
+
+        wheat = wheat * (int)USSRManager.Instance.level;
 
         return wheat;
     }

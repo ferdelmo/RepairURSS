@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
 
@@ -67,4 +67,8 @@ public class StartMenu : MonoBehaviour
         menu.SetActive(true);
     }
 
+    public void loadPlayScene()
+    {
+        SceneManager.LoadScene("SelectCountry");
+    }
 }
