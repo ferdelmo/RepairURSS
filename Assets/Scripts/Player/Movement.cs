@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
         if(directionAim != Vector2.zero)
         {
             float rot_z = OrientDirection(directionAim);
-            transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+            transform.rotation = Quaternion.Euler(0f, 0f, rot_z+90);
         }
     }
 
