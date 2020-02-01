@@ -18,7 +18,7 @@ public class USSRManager : MonoBehaviour
 
     public int numWheats = 0;
 
-    public int banks2generate = 5;
+    public int banks2generate = 2;
 
     public int wheats2generate = 5;
 
@@ -52,10 +52,6 @@ public class USSRManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         mapGenerator = GetComponent<MapGenerator>();
-
-        mapGenerator.numBanks = banks2generate;
-        mapGenerator.numHouses = houses2generate;
-        mapGenerator.numWheat = wheats2generate;
     }
 
     private void Update()
@@ -92,7 +88,11 @@ public class USSRManager : MonoBehaviour
 
     public void LoadNewLevel()
     {
-        SceneManager.LoadScene("Level" + level, LoadSceneMode.Single);
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
+
+        mapGenerator.numBanks = 2;
+        mapGenerator.numHouses = 10;
+        mapGenerator.numWheat = 20;
         mapGenerator.InitializeMap();
     }
 }
