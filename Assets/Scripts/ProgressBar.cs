@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountryController : MonoBehaviour
+[ExecuteInEditMode]
+public class ProgressBar : MonoBehaviour
 {
 
-    public Country country;
+    public float maximum;
+    public float current;
+    public Image mask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +20,11 @@ public class CountryController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public void Select()
+    public void setCurrentFill(float fill)
     {
-        GetComponent<Image>().color = Color.red;
-    }
-
-    public void UnSelect()
-    {
-        GetComponent<Image>().color = Color.white;
+        //float currentOffset = current - min
+        mask.fillAmount = fill;
     }
 }

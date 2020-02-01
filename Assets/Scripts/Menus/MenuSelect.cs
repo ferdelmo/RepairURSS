@@ -87,5 +87,7 @@ public class MenuSelect : MonoBehaviour
         ColorBlock cb = c.GetComponent<Button>().colors;
         cb.normalColor = Color.red;
         c.GetComponent<Button>().colors = cb;
+
+
     }
 }
