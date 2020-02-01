@@ -26,6 +26,8 @@ public class USSRManager : MonoBehaviour
 
     public string nextScene;
 
+    private bool newLevelLoaded = false;
+
     public static USSRManager Instance { get { return _instance; } }
 
     private void Start()
@@ -56,6 +58,15 @@ public class USSRManager : MonoBehaviour
         mapGenerator.numWheat = wheats2generate;
     }
 
+    private void Update()
+    {
+        if(( !newLevelLoaded && numHouses == houses2generate && numWheats == wheats2generate))
+        {
+            newLevelLoaded = true;
+            WonLevel();
+        }
+    }
+
     public void IncrementNumWheats()
     {
         numWheats++;
@@ -75,6 +86,7 @@ public class USSRManager : MonoBehaviour
     {
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
+        newLevelLoaded = false;
     }
 
     public void LoadNewLevel()
