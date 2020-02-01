@@ -60,7 +60,7 @@ public class USSRManager : MonoBehaviour
 
     private void Update()
     {
-        if(( !newLevelLoaded && numHouses == houses2generate && numWheats == wheats2generate))
+        if (( !newLevelLoaded && numHouses == houses2generate && numWheats == wheats2generate))
         {
             newLevelLoaded = true;
             WonLevel();
@@ -84,6 +84,7 @@ public class USSRManager : MonoBehaviour
 
     public void WonLevel()
     {
+        nextScene = "SelectCountry";
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
         newLevelLoaded = false;
@@ -91,7 +92,7 @@ public class USSRManager : MonoBehaviour
 
     public void LoadNewLevel()
     {
-        SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level" + level, LoadSceneMode.Single);
         mapGenerator.InitializeMap();
     }
 }
