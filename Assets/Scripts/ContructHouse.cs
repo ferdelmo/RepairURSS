@@ -9,11 +9,13 @@ public class ContructHouse : MonoBehaviour
     public ProgressBar progress;
     private float startTime;
     private bool isOnTrigger;
+    private Camera cam;
 
     void Start()
     {
         isOnTrigger = false;
         progress.gameObject.SetActive(false);
+        cam = Camera.main;
     }
 
     void Update()
@@ -22,15 +24,16 @@ public class ContructHouse : MonoBehaviour
          {
             startTime = Time.time;
          }
-        if (Input.GetButton("Fire1"))
+        if (isOnTrigger && Input.GetButton("hammer"))
         {
             progress.gameObject.SetActive(true);
+
+            Vector3 screenPos = cam.WorldToScreenPoint(this.gameObject.transform.position);
+            progress.gameObject.transform.position = screenPos;
             float lapsedTime = Time.time - startTime;
-            Debug.Log((lapsedTime  / timeToConstruct));
-            //ProgressBar progress = GetComponent<ProgressBar>();
+
             progress.setCurrentFill(lapsedTime / timeToConstruct);
-            //setCurrentFill(lapsedTime*100/ timeToConstruct);
-            if (isOnTrigger && Time.time - startTime >= timeToConstruct)
+            if (Time.time - startTime >= timeToConstruct)
             {
                 Debug.Log("Constructed");
             }
@@ -49,6 +52,7 @@ public class ContructHouse : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isOnTrigger = true;
+            //progress.gameObject.transform.Rotate(new Vector3(0, 0, this.gameObject.transform.rotation.z-180 ));
         }
     }
 
@@ -57,6 +61,7 @@ public class ContructHouse : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             isOnTrigger = false;
+            //progress.gameObject.transform.rotation = this.gameObject.transform.rotation;
         }
     }
 }
