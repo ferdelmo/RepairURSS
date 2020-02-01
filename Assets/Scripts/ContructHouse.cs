@@ -20,11 +20,11 @@ public class ContructHouse : MonoBehaviour
 
     void Update()
     {
-         if (Input.GetButtonDown("hammer"))
+         if (Input.GetButtonDown("Hammer"))
          {
             startTime = Time.time;
          }
-        if (isOnTrigger && Input.GetButton("hammer"))
+        if (isOnTrigger && Input.GetButton("Hammer"))
         {
             progress.gameObject.SetActive(true);
 
@@ -39,7 +39,7 @@ public class ContructHouse : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("hammer"))
+        if (Input.GetButtonUp("Hammer"))
          {
             startTime = 0;
             progress.setCurrentFill(0);

@@ -15,12 +15,12 @@ public class HammerDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("hammer"))
+        if (Input.GetButtonDown("Hammer"))
         {
             isPushedAttack = true;
         }
 
-        if (Input.GetButtonUp("hammer"))
+        if (Input.GetButtonUp("Hammer"))
         {
             isPushedAttack = false;
         }
