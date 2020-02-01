@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContructHouse : MonoBehaviour
+public class ConstructHouse : MonoBehaviour
 {
 
     public int timeToConstruct;
     public ProgressBar progress;
+    public Sprite constructedHouse;
+    public Sprite damagedHouse;
+    public bool isConstructed = false;
     private float startTime;
     private bool isOnTrigger;
     private Camera cam;
@@ -14,18 +17,30 @@ public class ContructHouse : MonoBehaviour
     void Start()
     {
         isOnTrigger = false;
+        if (isConstructed)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
+        }
+
         progress.gameObject.SetActive(false);
         cam = Camera.main;
     }
 
     void Update()
     {
-         if (Input.GetButtonDown("Hammer"))
+
+        if (!isConstructed)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = damagedHouse; 
+        }
+
+        if (Input.GetButtonDown("Hammer"))
          {
             startTime = Time.time;
-         }
-        if (isOnTrigger && Input.GetButton("Hammer"))
+        }
+        if (isOnTrigger && Input.GetButton("Hammer") && !isConstructed)
         {
+            Debug.Log("enter");
             progress.gameObject.SetActive(true);
 
             Vector3 screenPos = cam.WorldToScreenPoint(this.gameObject.transform.position);
@@ -36,6 +51,8 @@ public class ContructHouse : MonoBehaviour
             if (Time.time - startTime >= timeToConstruct)
             {
                 Debug.Log("Constructed");
+                this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
+                isConstructed = true;
             }
         }
 
