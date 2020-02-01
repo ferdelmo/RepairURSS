@@ -35,22 +35,22 @@ public class Wheat : MonoBehaviour
 
     private void Update()
     {
-        if (live)
+        /*if (live)
         {
             previousRegenerate = previousRegenerate + Time.deltaTime;
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // checkear la colision con la hoz
-        if(collision.tag == "Sickle" && live && previousRegenerate >= regenerateTime)
+        if(collision.tag == "Sickle" && live )
         {
             live = false;
             StartCoroutine(Revive());
             Instantiate(wheatLeft, transform.position, transform.rotation);
             previousRegenerate = 0;
-            //Debug.Log("wheat left");
+            Debug.Log("wheat left");
         }
     }
 

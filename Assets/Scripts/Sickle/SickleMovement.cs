@@ -8,7 +8,7 @@ public class SickleMovement : MonoBehaviour
     public Slider slider;
     private bool meleeAttack = false;
     public GameObject player;
-    public float maxTimeToReach = 5.0f;
+    public float maxTimeToReach = 1.0f;
     public float maxTimeToReturn = 5.0f;
     public float speed = 3.0f;
     private float strength = 1.0f;
@@ -91,7 +91,7 @@ public class SickleMovement : MonoBehaviour
 
                 if (playerReached >= 1.0f || ((player.transform.position - transform.position).magnitude < 1.0f))
                 {
-                    Debug.Log("jugador alcanzado!!");
+                    //Debug.Log("jugador alcanzado!!");
                     sickleShooted = false;
                 }
             }                        

@@ -25,7 +25,14 @@ public class WheatLeft : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            collision.gameObject.GetComponent<Health>().Heal(healthAmount);
+            if(collision.gameObject.GetComponent<Health>().health <
+                collision.gameObject.GetComponent<Health>().maxHealth)
+            {
+                collision.gameObject.GetComponent<Health>().Heal(healthAmount);
+            }
+            else{
+                USSRManager.Instance.IncrementNumWheats();
+            }
             Destroy(this.gameObject);
         }
     }
