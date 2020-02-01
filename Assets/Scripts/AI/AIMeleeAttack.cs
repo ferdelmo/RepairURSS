@@ -53,7 +53,7 @@ public class AIMeleeAttack : MonoBehaviour
                 Debug.Log("Attack");
                 //health.Damage(damage);
                 lastHitTime = 0;
-                mov.StopMoving(4.0f);
+                mov.StopMoving(.25f);
                 body.SetTrigger("attack");
             }
         }

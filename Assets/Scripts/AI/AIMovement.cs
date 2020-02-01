@@ -35,6 +35,7 @@ public class AIMovement : MonoBehaviour
     IEnumerator Stop(float duration)
     {
         yield return new WaitForSeconds(duration);
+        mov = true;
     }
 
     // Update is called once per frame
@@ -56,6 +57,8 @@ public class AIMovement : MonoBehaviour
             else
             {
 
+                body.SetBool("move", false);
+                legs.SetBool("move", false);
             }
             dir.Normalize();
             float angle = Movement.OrientDirection(dir);

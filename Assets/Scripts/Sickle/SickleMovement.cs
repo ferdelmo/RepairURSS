@@ -62,7 +62,7 @@ public class SickleMovement : MonoBehaviour
                 realDistance = 0.0f;
                 gameObject.GetComponent<CircleCollider2D>().enabled = true;
                 gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                StartCoroutine(MeleeAtack(0.25f));
+                StartCoroutine(MeleeAttack( 0.25f));
             } else
             {
                 meleeAttack = false;
@@ -77,8 +77,11 @@ public class SickleMovement : MonoBehaviour
             sickleShooted = true;
             keyPressed = false;
             Debug.Log( "ATTACKIIING!!");
-            gameObject.GetComponent<CircleCollider2D>().enabled = true;
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;         
+            if( !meleeAttack)
+            {
+                gameObject.GetComponent<CircleCollider2D>().enabled = true;
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            }        
         }
 
         if ( sickleShooted)
@@ -109,7 +112,7 @@ public class SickleMovement : MonoBehaviour
         {
             timeTravelledToPlayer += Time.deltaTime;
             playerReached = timeTravelledToPlayer / maxTimeToReturn;
-            transform.position = Vector2.Lerp(transform.position, player.transform.position /*transform.parent.position*/, playerReached);
+            transform.position = Vector2.Lerp(transform.position, player.transform.position /*+ new Vector3( 0f, 0.5f, 0.0f) *//*transform.parent.position*/, playerReached);
         }
     }
 
@@ -133,11 +136,12 @@ public class SickleMovement : MonoBehaviour
         slider.gameObject.SetActive( false);
     }
 
-    private IEnumerator MeleeAtack( float duration)
+    private IEnumerator MeleeAttack( float duration)
     {
         yield return new WaitForSeconds(duration);
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        sickleShooted = false;
     }
 }
 
