@@ -58,8 +58,11 @@ public class SickleMovement : MonoBehaviour
             if( tiempoPasado < 0.25f)
             {
                 meleeAttack = true;
-                //Debug.Log("Melee attack");
+                Debug.Log("Melee attack");
                 realDistance = 0.0f;
+                gameObject.GetComponent<CircleCollider2D>().enabled = true;
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                StartCoroutine(MeleeAtack(0.25f));
             } else
             {
                 meleeAttack = false;
@@ -73,14 +76,15 @@ public class SickleMovement : MonoBehaviour
             HideSlider();
             sickleShooted = true;
             keyPressed = false;
+            Debug.Log( "ATTACKIIING!!");
             gameObject.GetComponent<CircleCollider2D>().enabled = true;
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;         
         }
 
         if ( sickleShooted)
         {
             transform.Rotate(0, 0, 300 * Time.deltaTime);
-            if ( realDistance != 0)
+            if( realDistance != 0)
             {
                 transform.position += player.transform.up * speed * Time.deltaTime;
             }
@@ -93,7 +97,7 @@ public class SickleMovement : MonoBehaviour
                 playerReached = timeTravelledToPlayer / maxTimeToReturn;
                 transform.position = Vector2.Lerp(transform.position, player.transform.position, playerReached);
 
-                if (playerReached >= 1.0f || ((player.transform.position - transform.position).magnitude < 1.0f))
+                if ((playerReached >= 1.0f || ((player.transform.position - transform.position).magnitude < 1.0f)) && !meleeAttack)
                 {
                     //Debug.Log("jugador alcanzado!!");
                     gameObject.GetComponent<CircleCollider2D>().enabled = false;
@@ -128,4 +132,12 @@ public class SickleMovement : MonoBehaviour
     {
         slider.gameObject.SetActive( false);
     }
+
+    private IEnumerator MeleeAtack( float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
 }
+
