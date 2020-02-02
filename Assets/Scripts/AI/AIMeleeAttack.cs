@@ -56,6 +56,10 @@ public class AIMeleeAttack : MonoBehaviour
                 mov.StopMoving(.25f);
                 body.SetTrigger("attack");
             }
+            else
+            {
+                mov.StopMoving(.25f);
+            }
         }
     }
 
