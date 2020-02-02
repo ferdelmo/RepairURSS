@@ -7,6 +7,8 @@ public class WheatLeft : MonoBehaviour
     // Health amount the player will be heal
     public float healthAmount = 20;
 
+    public AudioSource pickUpWheatSound;
+
     public Wheat papa;
 
 
@@ -26,6 +28,7 @@ public class WheatLeft : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            pickUpWheatSound.Play();
             if(collision.gameObject.GetComponent<Health>().health <
                 collision.gameObject.GetComponent<Health>().maxHealth)
             {
