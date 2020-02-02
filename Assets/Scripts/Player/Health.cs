@@ -44,25 +44,26 @@ public class Health : MonoBehaviour
     public void Damage(float damage)
     {
         hitSound.Play();
-        //Debug.Log("Daños");
-        if (gameObject.tag == "Player") //Not called for enemy
-        {
-            healthProgressBar.setCurrentFill(health / maxHealth);
-        }
-        else
-        {
-              this.gameObject.SetActive(false); 
-        }
         if (health - damage <= 0)
         {
             health = 0;  
+            if( gameObject.tag == "Enemy")
+            {
+                USSRManager.Instance.enemyCount--;
+            }
             OnDeath();
         }
         else
         {
             health = health - damage;
         }
-        
+
+        if (gameObject.tag == "Player") //Not called for enemy
+        {
+            healthProgressBar.setCurrentFill(health / maxHealth);
+        }
+
+
         //Debug.Log("damaged");
     }
 
@@ -72,8 +73,7 @@ public class Health : MonoBehaviour
         GameObject chispitas = Instantiate(particleEffects, gameObject.transform.position, Quaternion.identity) as GameObject;
         chispitas.GetComponent<ParticleSystem>().Emit(1);
         Destroy(chispitas, 0.5f);
-        //gameObject.transform.forward, new Vector3( 1.0f, 1.0f, 0.0f), 5.0f, 2.0f, Color.red
-        //particleEffects.
+
         if ( gameObject.tag == "Player")
         {
             USSRManager.Instance.numWheats = 0;
