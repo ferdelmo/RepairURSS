@@ -11,16 +11,21 @@ public class HammerDamage : MonoBehaviour
     void Start()
     {
         isPushedAttack = false;
+        animPlayer = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Hammer"))
-        {
-            isPushedAttack = true;
-            animPlayer = this.GetComponent<Animator>();
-            animPlayer.SetTrigger("attackhammer");
+        { 
+            if(animPlayer.GetCurrentAnimatorStateInfo(0).IsName("End")
+                || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")
+                || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Move"))
+            {
+                isPushedAttack = true;
+                animPlayer.SetTrigger("attackhammer");
+            }
         }
 
         if (Input.GetButtonUp("Hammer"))
