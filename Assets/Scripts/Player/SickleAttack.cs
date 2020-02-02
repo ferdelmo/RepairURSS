@@ -46,13 +46,13 @@ public class SickleAttack : MonoBehaviour
             keyPressed = true;
             downTime = Time.time;
         }
-        else if (Input.GetButtonUp("Sickle") && !attackInitiated)
+        else if (Input.GetButtonUp("Sickle") && keyPressed && !attackInitiated)
         {
             //Debug.Log("Up");
             pressedTime = Time.time - downTime;
             keyPressed = false;
 
-            if (pressedTime < 0.75f)
+            if (pressedTime < 0.5f)
             {
                 Debug.Log("melee: " + pressedTime);
                 meleeAttack = true;
@@ -141,7 +141,7 @@ public class SickleAttack : MonoBehaviour
             //Debug.Log(tiempoPasado);
             slider.gameObject.SetActive(true);
         }
-        slider.value += 0.02f;
+        slider.value += 0.01f;
     }
 
     private void HideSlider()
