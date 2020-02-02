@@ -323,6 +323,8 @@ MonoBehaviour:
   maxHealth: 100
   healthProgressBar: {fileID: 0}
   hitSound: {fileID: -7086360117098446547}
+  particleEffects: {fileID: 3898730656170708319, guid: a220ab46b2fc6db418ad75749d3c83b2,
+    type: 3}
 --- !u!82 &-7086360117098446547
 AudioSource:
   m_ObjectHideFlags: 0
