@@ -56,10 +56,13 @@ public class USSRManager : MonoBehaviour
 
     private void Update()
     {
-        if (( !newLevelLoaded && numHouses >= houses2generate && numWheats >= wheats2generate))
+        if (numHouses > 0 && numWheats > 0)
         {
-            newLevelLoaded = true;
-            WonLevel();
+            if ((!newLevelLoaded && numHouses >= houses2generate && numWheats >= wheats2generate))
+            {
+                newLevelLoaded = true;
+                WonLevel();
+            }
         }
     }
 
@@ -83,11 +86,12 @@ public class USSRManager : MonoBehaviour
     {
         victorySound.Play();
         Debug.Log("won");
-        //nextScene = "SelectCountry";
-        //SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
-        SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        nextScene = "SelectCountry";
+        SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
         newLevelLoaded = false;
+        numHouses = 0;
+        numWheats = 0;
     }
 
     public void LoadNewLevel()
