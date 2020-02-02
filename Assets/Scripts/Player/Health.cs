@@ -41,16 +41,7 @@ public class Health : MonoBehaviour
 
     public void Damage(float damage)
     {
-        hitSound.Play();
-        //Debug.Log("Daños");
-        if (gameObject.tag == "Player") //Not called for enemy
-        {
-            healthProgressBar.setCurrentFill(health / maxHealth);
-        }
-        else
-        {
-              this.gameObject.SetActive(false); 
-        }
+        hitSound.Play();   this.gameObject.SetActive(false); 
         if (health - damage < 0)
         {
             health = 0;  
@@ -60,7 +51,16 @@ public class Health : MonoBehaviour
         {
             health = health - damage;
         }
-        
+        //Debug.Log("Daños");
+        if (gameObject.tag == "Player") //Not called for enemy
+        {
+            healthProgressBar.setCurrentFill(health / maxHealth);
+        }
+        else
+        {
+        }
+
+
         //Debug.Log("damaged");
     }
 
