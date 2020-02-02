@@ -52,7 +52,7 @@ public class SickleMovement : MonoBehaviour
         {
             
             float tiempoPasado = Time.time - downTime;
-            SetSliderValue( tiempoPasado);           
+            SetSliderValue(tiempoPasado);           
         }
 
         if ( Input.GetButtonUp( "Sickle")  && !sickleShooted)
