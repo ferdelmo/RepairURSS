@@ -383,6 +383,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6710572856286542221, guid: 42fbe50aa42bf314e8a67ba067a6298b,
+        type: 3}
+      propertyPath: wheats2generate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710572856286542221, guid: 42fbe50aa42bf314e8a67ba067a6298b,
+        type: 3}
+      propertyPath: houses2generate
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42fbe50aa42bf314e8a67ba067a6298b, type: 3}
 --- !u!1 &743489806
@@ -787,6 +797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2637386468943913007, guid: 32ba0085e456bc34db9e26f5db01bc32,
+        type: 3}
+      propertyPath: numWheat
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8705996525208520372, guid: 32ba0085e456bc34db9e26f5db01bc32,
         type: 3}

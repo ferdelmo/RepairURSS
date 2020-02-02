@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+using UnityEngine.EventSystems;
+
 public class StartMenu : MonoBehaviour
 {
 
@@ -20,6 +23,14 @@ public class StartMenu : MonoBehaviour
     public GameObject credits;
 
     public GameObject tutorial;
+
+    public GameObject creditsBack;
+
+    public GameObject tutorialBack;
+
+    public EventSystem es;
+
+    public GameObject play;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +84,8 @@ public class StartMenu : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         menu.SetActive(true);
+        play = es.firstSelectedGameObject;
+        play.GetComponent<Button>().Select();
     }
 
     public void loadPlayScene() 
@@ -83,12 +96,17 @@ public class StartMenu : MonoBehaviour
     public void Credits()
     {
         menu.SetActive(false);
+        es.SetSelectedGameObject(creditsBack);
+        creditsBack.GetComponent<Button>().Select();
         credits.SetActive(true);
+
     }
 
     public void Tutorial()
     {
         menu.SetActive(false);
+        es.SetSelectedGameObject(tutorialBack);
+        tutorialBack.GetComponent<Button>().Select();
         tutorial.SetActive(true);
     }
 
@@ -97,6 +115,7 @@ public class StartMenu : MonoBehaviour
         menu.SetActive(true);
         credits.SetActive(false);
         tutorial.SetActive(false);
+        es.SetSelectedGameObject(play);
     }
 
     public void quit()
