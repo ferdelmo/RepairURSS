@@ -49,8 +49,6 @@ public class AIMovement : MonoBehaviour
         {
             Vector2 dir = player.position - transform.position;
 
-            Debug.DrawLine(transform.position, -dir.normalized * (distance + 0.25f), Color.red, 5.0f);
-
             if (dir.magnitude > distance)
             {
                 dir.Normalize();
