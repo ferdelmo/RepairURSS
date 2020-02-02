@@ -130,8 +130,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 8428363231788923078, guid: a3c2de30719d53041a43066928cb002d, type: 3}
   - {fileID: 364931764793164367, guid: 16bce655696b79c409a69b6acc50495c, type: 3}
-  meleeProbability: 0.7
-  spawnTime: 6
+  meleeProbability: 0.8
+  spawnTime: 8
   previousSpawnTime: 0
   spawnPoint: {fileID: 360248453}
 --- !u!61 &1920149764111253628

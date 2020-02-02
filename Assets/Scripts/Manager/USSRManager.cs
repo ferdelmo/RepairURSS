@@ -30,6 +30,10 @@ public class USSRManager : MonoBehaviour
 
     public AudioSource gameOverSound;
 
+    public int enemyCount = 0;
+
+    public int enemyMax = 10;
+
     public static USSRManager Instance { get { return _instance; } }
 
     private void Awake()
@@ -56,40 +60,51 @@ public class USSRManager : MonoBehaviour
 
     private void Update()
     {
-        if (( !newLevelLoaded && numHouses >= houses2generate && numWheats >= wheats2generate))
+
+    }
+
+    public void IncrementNumWheats()
+    {
+        numWheats++;
+        if (numHouses >= houses2generate && numWheats >= wheats2generate)
         {
             newLevelLoaded = true;
             WonLevel();
         }
     }
 
-    public void IncrementNumWheats()
-    {
-        numWheats++;
-    }
-
     public void IncrementNumHouses()
     {
         numHouses++;
+        if (numHouses >= houses2generate && numWheats >= wheats2generate)
+        {
+            newLevelLoaded = true;
+            WonLevel();
+        }
     }
 
     public void OnPlayerDeath()
     {
         gameOverSound.Play();
+        enemyCount = 0;
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
     }
 
     public void WonLevel()
     {
         victorySound.Play();
+        Debug.Log("won");
         nextScene = "SelectCountry";
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
         newLevelLoaded = false;
+        numHouses = 0;
+        numWheats = 0;
     }
 
     public void LoadNewLevel()
     {
+        enemyCount = 0;
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
     }
 }
