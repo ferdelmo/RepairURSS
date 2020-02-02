@@ -68,6 +68,8 @@ public class Health : MonoBehaviour
     {
         if( gameObject.tag == "Player")
         {
+            USSRManager.Instance.numWheats = 0;
+            USSRManager.Instance.numHouses = 0;
             Debug.Log("Ha muerto: " + this.gameObject.tag);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         } else if( gameObject.tag == "Enemy")

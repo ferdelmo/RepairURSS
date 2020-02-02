@@ -14,7 +14,6 @@ public class HousesHUD : MonoBehaviour
     void Start()
     {
         totalHouses = USSRManager.Instance.houses2generate;
-        Debug.Log("house TEXT: " + houseText);
     }
 
     private void Awake()
@@ -26,6 +25,6 @@ public class HousesHUD : MonoBehaviour
     void Update()
     {
         currentHouses = USSRManager.Instance.numHouses;
-        houseText.text = "houseText: " + currentHouses + "/" + totalHouses;
+        houseText.text = "HOUSES: " + currentHouses + "/" + totalHouses;
     }
 }
