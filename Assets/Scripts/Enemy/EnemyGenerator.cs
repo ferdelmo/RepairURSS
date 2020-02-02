@@ -7,7 +7,7 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject[] enemies;
 
     // Probability of spawned enemy to be a melee
-    public float meleeProbability = 0.5f;
+    public float meleeProbability = 0.8f;
 
 
     // Time to spawn enemy
@@ -28,7 +28,7 @@ public class EnemyGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (previousSpawnTime >= spawnTime)
+        if (previousSpawnTime >= spawnTime && USSRManager.Instance.enemyCount < USSRManager.Instance.enemyMax)
         {
             if (Random.Range(0.0f, 1.0f) <= meleeProbability)
             {
@@ -36,6 +36,7 @@ public class EnemyGenerator : MonoBehaviour
                                 spawnPoint.rotation);
                 enemy.GetComponent<AIMeleeAttack>().damage =
                     enemy.GetComponent<AIMeleeAttack>().baseDamage * USSRManager.Instance.level;
+                USSRManager.Instance.enemyCount++;
             }
             else
             {
@@ -43,6 +44,7 @@ public class EnemyGenerator : MonoBehaviour
                                 spawnPoint.rotation);
                 enemy.GetComponent<AIShoot>().damage =
                     enemy.GetComponent<AIShoot>().baseDamage * USSRManager.Instance.level;
+                USSRManager.Instance.enemyCount++;
             }
             previousSpawnTime = 0.0f;
         }

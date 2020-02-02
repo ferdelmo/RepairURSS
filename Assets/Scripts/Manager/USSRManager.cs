@@ -30,6 +30,10 @@ public class USSRManager : MonoBehaviour
 
     public AudioSource gameOverSound;
 
+    public int enemyCount = 0;
+
+    public int enemyMax = 20;
+
     public static USSRManager Instance { get { return _instance; } }
 
     private void Awake()
@@ -79,6 +83,7 @@ public class USSRManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         gameOverSound.Play();
+        enemyCount = 0;
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
     }
 
@@ -96,6 +101,7 @@ public class USSRManager : MonoBehaviour
 
     public void LoadNewLevel()
     {
+        enemyCount = 0;
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
     }
 }

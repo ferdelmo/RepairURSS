@@ -58,6 +58,7 @@ public class Health : MonoBehaviour
         }
         else
         {
+            USSRManager.Instance.enemyCount--;
         }
 
 
