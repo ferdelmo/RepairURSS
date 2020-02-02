@@ -142,15 +142,15 @@ public class MapGenerator : MonoBehaviour
 
 
         int aux = 0;
-        for (aux = 0; aux <= y; aux++)
+        for (aux = 1; aux < y; aux++)
         {
-            Instantiate(wall, new Vector3((float)-x / 2, aux - (y / 2), 5), Quaternion.identity);
-            Instantiate(wall, new Vector3((float)x / 2, aux - (y / 2), 5), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)-x / 2, aux - (y / 2), -1+aux*0.1f), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)x / 2, aux - (y / 2), -1+aux * 0.1f), Quaternion.identity);
         }
-        for (aux = 0; aux <= x; aux++)
+        for (aux = 0; aux < x; aux++)
         {
-            Instantiate(wall, new Vector3((float)aux - (x / 2), y / 2, 5), Quaternion.identity);
-            Instantiate(wall, new Vector3((float)aux - (x / 2), -y / 2, 5), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)aux - (x / 2), y / 2, -1), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)aux - (x / 2), -y / 2, -1), Quaternion.identity);
         }
 
         for(int i = 0; i<= x; i++)
