@@ -17,7 +17,7 @@ public class HammerDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Hammer"))
+        if (Input.GetButtonDown("Hammer") && !isPushedAttack)
         { 
             if(animPlayer.GetCurrentAnimatorStateInfo(0).IsName("End")
                 || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")

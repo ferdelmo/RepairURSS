@@ -17,6 +17,8 @@ public class ConstructHouse : MonoBehaviour
     private Camera cam;
     private Vector3 positionOutCanvas = new Vector3(1050, 0, 0 );
 
+    bool pushed = false;
+
     void Start()
     {
         GameObject progressBars = GameObject.FindWithTag("ProgressBuilding");
@@ -40,10 +42,7 @@ public class ConstructHouse : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sprite = damagedHouse; 
         }
 
-        if (Input.GetButtonDown("Hammer"))
-         {
-            startTime = Time.time;
-        }
+        /*   
 
         if (isOnTrigger && Input.GetButton("Hammer") && !isConstructed)
         {
@@ -66,11 +65,62 @@ public class ConstructHouse : MonoBehaviour
         }
 
         if (Input.GetButtonUp("Hammer"))
-         {
+        {
             startTime = 0;
             progress.setCurrentFill(0);
             progress.gameObject.SetActive(false);
             //progress.gameObject.transform.position = positionOutCanvas;
+        }
+        */
+        if (isOnTrigger && !isConstructed)
+        {
+            if (Input.GetButtonDown("Hammer") && !pushed)
+            {
+                startTime = Time.time;
+                pushed = true;
+            }
+            else if (Input.GetButtonUp("Hammer"))
+            {
+                pushed = false;
+                if (!isConstructed)
+                {
+                    progress.setCurrentFill(0);
+                    progress.gameObject.SetActive(false);
+                }
+            }
+            else if (pushed)
+            {
+                progress.gameObject.SetActive(true);
+                if(animPlayer.GetCurrentAnimatorStateInfo(0).IsName("End")
+                || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")
+                || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Move"))
+                {
+                    animPlayer.SetTrigger("attackhammer");
+                }
+
+                Vector3 screenPos = cam.WorldToScreenPoint(this.gameObject.transform.position);
+                progress.gameObject.transform.position = screenPos;
+                float lapsedTime = Time.time - startTime;
+
+                progress.setCurrentFill(lapsedTime / timeToConstruct);
+                if (Time.time - startTime >= timeToConstruct)
+                {
+                    this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
+                    isConstructed = true;
+                    USSRManager.Instance.IncrementNumHouses();
+                    progress.gameObject.SetActive(false);
+                    //progress.gameObject.transform.position = positionOutCanvas;
+                }
+            }
+        }
+        else if(!isConstructed)
+        {
+            if (pushed)
+            {
+                progress.setCurrentFill(0);
+                progress.gameObject.SetActive(false);
+                pushed = false;
+            }
         }
     }
 

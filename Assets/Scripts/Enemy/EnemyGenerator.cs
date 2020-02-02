@@ -20,7 +20,7 @@ public class EnemyGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnTime += Random.Range(0.0f, 2.5f);
     }
 
     // Update is called once per frame
