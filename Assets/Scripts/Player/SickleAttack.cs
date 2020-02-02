@@ -71,7 +71,7 @@ public class SickleAttack : MonoBehaviour
                 sickle.transform.position = transform.position + Vector3.Cross(transform.up, transform.forward) * 0.75f;
                 sickle.GetComponent<CircleCollider2D>().enabled = true;
                 sickle.GetComponent<SpriteRenderer>().enabled = true;
-                playerAnim.SetTrigger("sicklethrow");
+                playerAnim.SetTrigger("throwsickle");
                 attackInitiated = true;
                 StartCoroutine(RangeAttack());
             }
@@ -84,7 +84,7 @@ public class SickleAttack : MonoBehaviour
     public IEnumerator MeleeAttack(float duration)
     {
         yield return new WaitForSeconds(duration);
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        sickle.GetComponent<CircleCollider2D>().enabled = false;
         attackInitiated = false;
     }
 
@@ -114,19 +114,8 @@ public class SickleAttack : MonoBehaviour
             yield return null;
         }
         attackInitiated = false;
-        attackInitiated = sickle.GetComponent<CircleCollider2D>().enabled = false;
+        sickle.GetComponent<CircleCollider2D>().enabled = false;
         sickle.GetComponent<SpriteRenderer>().enabled = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Enemy"){
-            other.GetComponent<Health>().Damage(damage);
-
-        } else if(other.gameObject.tag == "Wheat")
-        {
-            other.GetComponent<Wheat>().Cut();
-        }
     }
 
     private void InitializeSliderValue()

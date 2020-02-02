@@ -11,8 +11,11 @@ public class HammerDamage : MonoBehaviour
 
     public delegate void OnDown();
 
-    public OnDown onDown;
-    public OnDown onUp;
+    public OnDown onDown = null;
+    public OnDown onUp = null;
+    bool dodamage = false;
+
+    Coroutine damage;
     
     // Start is called before the first frame update
     void Start()
@@ -31,22 +34,41 @@ public class HammerDamage : MonoBehaviour
                 || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")
                 || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Move"))
             {
+                if (damage != null)
+                {
+                    StopCoroutine(damage);
+                }
+                damage = StartCoroutine(DoDamage(1.0f));
+                dodamage = true;
                 animPlayer.SetTrigger("attackhammer");
             }
-            onDown();
+            if (onDown != null)
+            {
+
+                onDown();
+            }
         }
 
         if (Input.GetButtonUp("Hammer"))
         {
             isPushedAttack = false;
-            onUp();
+            if(onUp != null)
+            {
+                onUp();
+            }
         }
 
     }
 
+    IEnumerator DoDamage(float dur)
+    {
+        yield return new WaitForSeconds(dur);
+        dodamage = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && dodamage)
         {
             Debug.Log("bam");
             other.GetComponent<Health>().Damage(hammerDamage);
