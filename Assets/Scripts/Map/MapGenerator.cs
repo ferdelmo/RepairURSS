@@ -99,7 +99,7 @@ public class MapGenerator : MonoBehaviour
 
             //Debug.Log("WHEAT: " + generatedX + " - " + generatedY);
 
-            float prob = tex.GetPixel(this.x/2+generatedX, this.y / 2 + generatedY).r;
+            float prob = tex.GetPixel(this.x/2 + generatedX, this.y / 2 + generatedY).r;
 
             //Debug.Log("PROOOOOOB: " + prob);
 
@@ -183,8 +183,8 @@ public class MapGenerator : MonoBehaviour
                 break;
         }
 
-        x = (int)signX * Random.Range(3, this.x / 2);
-        y = (int)signY * Random.Range(3, this.y / 2);
+        x = (int)signX * Random.Range(3, this.x / 2-3);
+        y = (int)signY * Random.Range(3, this.y / 2-3);
 
         ale = Random.Range(0.0f, 1.0f);
     }

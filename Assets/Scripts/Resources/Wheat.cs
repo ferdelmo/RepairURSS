@@ -31,8 +31,8 @@ public class Wheat : MonoBehaviour
     public void Cut()
     {
         live = false;
-        StartCoroutine(Revive());
-        Instantiate(wheatLeft, transform.position, transform.rotation);
+        //StartCoroutine(Revive());
+        //Instantiate(wheatLeft, transform.position, transform.rotation);
     }
 
     private void Update()

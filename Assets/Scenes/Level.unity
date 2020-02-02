@@ -246,10 +246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 324117161, guid: b1f90b51f99301243bbd6073f9288d56, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1239617177, guid: b1f90b51f99301243bbd6073f9288d56, type: 3}
       propertyPath: slider
       value: 
