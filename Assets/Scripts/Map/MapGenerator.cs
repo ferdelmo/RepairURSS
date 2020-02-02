@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,11 +25,17 @@ public class MapGenerator : MonoBehaviour
     public GameObject wall;
     public GameObject floor;
 
+    public List<AudioClip> music;
+
+    private AudioSource audioSource;
+
     Vector2 tileSize = new Vector2(1, 1);
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = music[UnityEngine.Random.Range(0, music.Count)];
+        audioSource.Play();
         Country country = USSRManager.Instance.country;
 
         /*numHouses = 10;
@@ -54,7 +61,7 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        Random.InitState(System.DateTime.Now.Hour + System.DateTime.Now.Second);
+        UnityEngine.Random.InitState(System.DateTime.Now.Hour + System.DateTime.Now.Second);
 
         GenerateMap();
 
@@ -163,7 +170,7 @@ public class MapGenerator : MonoBehaviour
         float signX = 1;
         float signY = 1;
 
-        switch (Random.Range(0, 4))
+        switch (UnityEngine.Random.Range(0, 4))
         {
             case 0:
                 signX = 1;
@@ -183,10 +190,10 @@ public class MapGenerator : MonoBehaviour
                 break;
         }
 
-        x = (int)signX * Random.Range(3, this.x / 2-3);
-        y = (int)signY * Random.Range(3, this.y / 2-3);
+        x = (int)signX * UnityEngine.Random.Range(3, this.x / 2-3);
+        y = (int)signY * UnityEngine.Random.Range(3, this.y / 2-3);
 
-        ale = Random.Range(0.0f, 1.0f);
+        ale = UnityEngine.Random.Range(0.0f, 1.0f);
     }
 
     public enum Tile { Bank, House, Wheat };
@@ -231,7 +238,7 @@ public class MapGenerator : MonoBehaviour
         while (instantiated < maxObjects && i < positions.Count)
         {
             Vector3 pos = positions[i];
-            float aleatorio = Random.Range(0.0f, 1.0f);
+            float aleatorio = UnityEngine.Random.Range(0.0f, 1.0f);
             float valorPos = (1 - System.Math.Abs(pos.z / radius));
 
             if (valorPos >= aleatorio)

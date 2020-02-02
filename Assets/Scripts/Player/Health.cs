@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
 
     public ProgressBar healthProgressBar;
 
+    public AudioSource hitSound;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class Health : MonoBehaviour
 
     public void Damage(float damage)
     {
+        hitSound.Play();
         //Debug.Log("Daños");
         if (gameObject.tag == "Player") //Not called for enemy
         {
