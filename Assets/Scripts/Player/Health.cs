@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
 
     public void Damage(float damage)
     {
-        hitSound.Play();   this.gameObject.SetActive(false); 
+        hitSound.Play();
         if (health - damage < 0)
         {
             health = 0;  

@@ -29,6 +29,11 @@ public class AIMeleeAttack : MonoBehaviour
 
     public Animator body;
 
+    private void OnDisable()
+    {
+        Debug.Log("COSIS");
+    }
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
