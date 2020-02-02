@@ -139,6 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8559466162204507794}
+  - {fileID: 3898730657139844142}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -278,6 +279,7 @@ MonoBehaviour:
   maxHealth: 100
   healthProgressBar: {fileID: 0}
   hitSound: {fileID: 6632449795163118617}
+  particleEffects: {fileID: 3898730657139844141}
 --- !u!58 &898724128
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -434,3 +436,89 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1313204594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8559466162518816156}
+    m_Modifications:
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708319, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_Name
+      value: Blood_ParticleEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3898730656170708319, guid: a220ab46b2fc6db418ad75749d3c83b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a220ab46b2fc6db418ad75749d3c83b2, type: 3}
+--- !u!1 &3898730657139844141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3898730656170708319, guid: a220ab46b2fc6db418ad75749d3c83b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1313204594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3898730657139844142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3898730656170708316, guid: a220ab46b2fc6db418ad75749d3c83b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1313204594}
+  m_PrefabAsset: {fileID: 0}

@@ -48,7 +48,7 @@ MonoBehaviour:
   x: 51
   y: 51
   numHouses: 20
-  numWheat: 30
+  numWheat: 100
   numBanks: 4
   tex: {fileID: 0}
   wheat: {fileID: 5187409694136352870, guid: 4ba552b38c1b0304eb866acbc019804e, type: 3}

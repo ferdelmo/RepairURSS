@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
         {
             health = health + amount;
         }
+        healthProgressBar.setCurrentFill(health / maxHealth);
         //Debug.Log("Healed: " + health + amount);
     }
 
@@ -72,6 +73,7 @@ public class Health : MonoBehaviour
         Debug.Log("BICHO MUERTOOO");
         GameObject chispitas = Instantiate(particleEffects, gameObject.transform.position, Quaternion.identity) as GameObject;
         chispitas.GetComponent<ParticleSystem>().Emit(1);
+        
         Destroy(chispitas, 0.5f);
 
         if ( gameObject.tag == "Player")
