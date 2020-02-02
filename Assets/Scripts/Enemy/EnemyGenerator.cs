@@ -21,6 +21,8 @@ public class EnemyGenerator : MonoBehaviour
     void Start()
     {
         spawnTime += Random.Range(0.0f, 2.5f);
+        previousSpawnTime = spawnTime;
+
     }
 
     // Update is called once per frame
