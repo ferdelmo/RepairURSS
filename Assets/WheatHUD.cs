@@ -25,7 +25,7 @@ public class WheatHUD : MonoBehaviour
     void Update()
     {
         currentWheats = USSRManager.Instance.numWheats;
-        wheatText.text = "Wheat: " + currentWheats + "/" + totalWheats;
+        wheatText.text = "WHEAT: " + currentWheats + "/" + totalWheats;
     }
 
 }
