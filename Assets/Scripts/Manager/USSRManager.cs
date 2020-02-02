@@ -26,6 +26,10 @@ public class USSRManager : MonoBehaviour
 
     private bool newLevelLoaded = false;
 
+    public AudioSource victorySound;
+
+    public AudioSource gameOverSound;
+
     public static USSRManager Instance { get { return _instance; } }
 
     private void Awake()
@@ -52,7 +56,7 @@ public class USSRManager : MonoBehaviour
 
     private void Update()
     {
-        if (( !newLevelLoaded && numHouses == houses2generate && numWheats == wheats2generate))
+        if (( !newLevelLoaded && numHouses >= houses2generate && numWheats >= wheats2generate))
         {
             newLevelLoaded = true;
             WonLevel();
@@ -71,11 +75,13 @@ public class USSRManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        gameOverSound.Play();
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
     }
 
     public void WonLevel()
     {
+        victorySound.Play();
         nextScene = "SelectCountry";
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         level++;
