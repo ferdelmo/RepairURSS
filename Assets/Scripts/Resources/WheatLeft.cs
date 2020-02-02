@@ -9,6 +9,9 @@ public class WheatLeft : MonoBehaviour
 
     public AudioSource pickUpWheatSound;
 
+    public Wheat papa;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +38,13 @@ public class WheatLeft : MonoBehaviour
                 USSRManager.Instance.IncrementNumWheats();
             }
             Destroy(this.gameObject);
+            papa.StartCoroutine(papa.Revive());
         }
-        
+        /*
         if(collision.gameObject.tag == "Wheat")
         {
             Destroy(this.gameObject);
         }
+        */
     }
 }

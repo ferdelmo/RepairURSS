@@ -20,6 +20,8 @@ public class Wheat : MonoBehaviour
 
     public Collider2D coll;
 
+    public GameObject wheatDejado;
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -30,7 +32,7 @@ public class Wheat : MonoBehaviour
 
     public void Cut()
     {
-        live = false;
+        //live = false;
         //StartCoroutine(Revive());
         //Instantiate(wheatLeft, transform.position, transform.rotation);
     }
@@ -51,14 +53,15 @@ public class Wheat : MonoBehaviour
             coll.enabled = false;
             live = false;
             coll = GetComponent<Collider2D>();
-            StartCoroutine(Revive());
-            Instantiate(wheatLeft, transform.position, transform.rotation);
+            GameObject c = Instantiate(wheatLeft, transform.position, transform.rotation);
+            c.GetComponent<WheatLeft>().papa = this;
+
             previousRegenerate = 0;
             Debug.Log("wheat left");
         }
     }
 
-    IEnumerator Revive()
+    public IEnumerator Revive()
     {
         float time = 0;
         sr.sprite = death;
@@ -71,6 +74,5 @@ public class Wheat : MonoBehaviour
         sr.sprite = normal;
         coll.enabled = true;
     }
-
 
 }
