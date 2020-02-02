@@ -71,7 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9e768dde8d67fd04598e1ec4d5ea25ad, type: 3}
+  m_Sprite: {fileID: 3637694436591301765, guid: f2a798c4af2199c4f821b24a960e23da,
+    type: 3}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,8 +98,8 @@ MonoBehaviour:
   regenerateTime: 5
   previousRegenerate: 0
   live: 1
-  death: {r: 0, g: 1, b: 0.32248926, a: 1}
-  alive: {r: 0.9559822, g: 1, b: 0, a: 1}
+  normal: {fileID: 3637694436591301765, guid: f2a798c4af2199c4f821b24a960e23da, type: 3}
+  death: {fileID: -8871038989383191861, guid: f2a798c4af2199c4f821b24a960e23da, type: 3}
   wheatLeft: {fileID: 3989790307222155595, guid: 3a04903cffd87b448b5e3e13ac893c70,
     type: 3}
 --- !u!58 &418784226005108347

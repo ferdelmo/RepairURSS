@@ -10,11 +10,11 @@ public class Wheat : MonoBehaviour
 
     public bool live = true;
 
-    public Color death;
-
-    public Color alive;
-
     SpriteRenderer sr;
+
+    public Sprite normal;
+
+    public Sprite death;
 
     public GameObject wheatLeft;
 
@@ -22,7 +22,7 @@ public class Wheat : MonoBehaviour
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        sr.color = alive;
+        sr.sprite = normal;
         previousRegenerate = regenerateTime;
     }
 
@@ -57,13 +57,14 @@ public class Wheat : MonoBehaviour
     IEnumerator Revive()
     {
         float time = 0;
+        sr.sprite = death;
         while (time < regenerateTime)
         {
-            sr.color = Color.Lerp(death, alive, time / regenerateTime);
             time += Time.deltaTime;
             yield return null;
         }
         live = true;
+        sr.sprite = normal;
     }
 
 

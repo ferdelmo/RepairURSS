@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 1286171726675305347}
   - component: {fileID: 1286171726675305346}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: SliderSickle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

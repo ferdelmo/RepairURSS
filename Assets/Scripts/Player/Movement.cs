@@ -10,10 +10,12 @@ public class Movement : MonoBehaviour
     public Animator body;
     public Animator legs;
 
+    Rigidbody2D rigid;
+
     Vector2 direction;
     void Start()
     {
-
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -48,11 +50,8 @@ public class Movement : MonoBehaviour
         Vector2 pos = transform.position;
 
         //Mover al personaje
-        transform.position = pos + directionMov * velocity * Time.deltaTime;
 
-
-
-        Vector2 newPos = transform.position;
+        rigid.MovePosition(pos + directionMov * velocity * Time.deltaTime);
 
         //Orientar al personaje
         if(directionAim != Vector2.zero)
