@@ -25,6 +25,6 @@ public class HousesHUD : MonoBehaviour
     void Update()
     {
         currentHouses = USSRManager.Instance.numHouses;
-        houseText.text = "HOUSES REPAIRED: " + currentHouses + "/" + totalHouses;
+        houseText.text = "HOUSES: " + currentHouses + "/" + totalHouses;
     }
 }
