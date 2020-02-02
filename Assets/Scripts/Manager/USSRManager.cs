@@ -60,7 +60,14 @@ public class USSRManager : MonoBehaviour
 
     private void Update()
     {
-
+        if (Input.GetButtonDown("Start"))
+        {
+            newLevelLoaded = false;
+            numHouses = 0;
+            numWheats = 0;
+            Debug.Log("polls");
+            SceneManager.LoadScene("Start", LoadSceneMode.Single);
+        }
     }
 
     public void IncrementNumWheats()
@@ -86,7 +93,9 @@ public class USSRManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         gameOverSound.Play();
-        enemyCount = 0;
+        newLevelLoaded = false;
+        numHouses = 0;
+        numWheats = 0;
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
     }
 
@@ -106,5 +115,8 @@ public class USSRManager : MonoBehaviour
     {
         enemyCount = 0;
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        newLevelLoaded = false;
+        numHouses = 0;
+        numWheats = 0;
     }
 }
