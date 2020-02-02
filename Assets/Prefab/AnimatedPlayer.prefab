@@ -331,8 +331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
-  maxDistance: 10
-  speed: 5
+  maxDistance: 5
+  speed: 12.5
   maxPressedTime: 2
-  timeToReach: 2
+  timeToReach: 1
   damage: 10
