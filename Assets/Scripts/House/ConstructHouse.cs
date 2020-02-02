@@ -20,6 +20,8 @@ public class ConstructHouse : MonoBehaviour
     bool pushed = false;
     HammerDamage hd;
 
+    public GameObject flag;
+
     void Start()
     {
         GameObject progressBars = GameObject.FindWithTag("ProgressBuilding");
@@ -39,6 +41,7 @@ public class ConstructHouse : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = damagedHouse;
 
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), hd.hammer);
+        flag.SetActive(false);
     }
 
     void Update()
@@ -110,6 +113,7 @@ public class ConstructHouse : MonoBehaviour
                 {
                     GetComponent<SpriteRenderer>().sprite = constructedHouse[Random.Range(0,constructedHouse.Length)];
                     isConstructed = true;
+                    flag.SetActive(true);
                     USSRManager.Instance.IncrementNumHouses();
                     progress.gameObject.SetActive(false);
                     //progress.gameObject.transform.position = positionOutCanvas;
