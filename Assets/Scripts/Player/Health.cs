@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class Health : MonoBehaviour
         {
             health = health - damage;
         }
-        if( this.gameObject.tag == "Player") //Not called for enemy
+        if( gameObject.tag == "Player") //Not called for enemy
         {
             healthProgressBar.setCurrentFill(health / maxHealth);
         }
@@ -59,6 +60,14 @@ public class Health : MonoBehaviour
 
     void OnDeath()
     {
-        Debug.Log("Ha muerto: " + this.gameObject.tag);
+        if( gameObject.tag == "Player")
+        {
+            Debug.Log("Ha muerto: " + this.gameObject.tag);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        } else if( gameObject.tag == "Enemy")
+        {
+            Destroy(this);
+        }
+        
     }
 }
