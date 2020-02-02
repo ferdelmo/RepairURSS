@@ -7,6 +7,7 @@ public class WheatLeft : MonoBehaviour
     // Health amount the player will be heal
     public float healthAmount = 20;
 
+    public Wheat papa;
 
 
     // Start is called before the first frame update
@@ -34,11 +35,13 @@ public class WheatLeft : MonoBehaviour
                 USSRManager.Instance.IncrementNumWheats();
             }
             Destroy(this.gameObject);
+            papa.StartCoroutine(papa.Revive());
         }
-        
+        /*
         if(collision.gameObject.tag == "Wheat")
         {
             Destroy(this.gameObject);
         }
+        */
     }
 }
