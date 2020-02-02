@@ -37,7 +37,7 @@ public class HammerDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isPushedAttack && other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("bam");
             other.GetComponent<Health>().Damage(hammerDamage);
