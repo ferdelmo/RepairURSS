@@ -18,6 +18,7 @@ public class ConstructHouse : MonoBehaviour
     private Vector3 positionOutCanvas = new Vector3(1050, 0, 0 );
 
     bool pushed = false;
+    HammerDamage hd;
 
     void Start()
     {
@@ -27,20 +28,21 @@ public class ConstructHouse : MonoBehaviour
             this.progress = progressBars.GetComponent<ProgressBar>();
         }
         isOnTrigger = false;
-        if (isConstructed)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
-        }
 
         cam = Camera.main;
+
+        animPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+
+        hd = animPlayer.gameObject.GetComponent<HammerDamage>();
+        hd.onDown += Pushed;
+        hd.onUp += Up;
+        GetComponent<SpriteRenderer>().sprite = damagedHouse;
+
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), hd.hammer);
     }
 
     void Update()
     {
-        if (!isConstructed)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = damagedHouse; 
-        }
 
         /*   
 
@@ -74,6 +76,7 @@ public class ConstructHouse : MonoBehaviour
         */
         if (isOnTrigger && !isConstructed)
         {
+            /*
             if (Input.GetButtonDown("Hammer") && !pushed)
             {
                 startTime = Time.time;
@@ -87,8 +90,8 @@ public class ConstructHouse : MonoBehaviour
                     progress.setCurrentFill(0);
                     progress.gameObject.SetActive(false);
                 }
-            }
-            else if (pushed)
+            }*/
+            if (pushed)
             {
                 progress.gameObject.SetActive(true);
                 if(animPlayer.GetCurrentAnimatorStateInfo(0).IsName("End")
@@ -103,13 +106,16 @@ public class ConstructHouse : MonoBehaviour
                 float lapsedTime = Time.time - startTime;
 
                 progress.setCurrentFill(lapsedTime / timeToConstruct);
-                if (Time.time - startTime >= timeToConstruct)
+                if (lapsedTime >= timeToConstruct)
                 {
-                    this.GetComponent<SpriteRenderer>().sprite = constructedHouse;
+                    GetComponent<SpriteRenderer>().sprite = constructedHouse;
                     isConstructed = true;
                     USSRManager.Instance.IncrementNumHouses();
                     progress.gameObject.SetActive(false);
                     //progress.gameObject.transform.position = positionOutCanvas;
+                    hd.onDown -= Pushed;
+                    hd.onUp -= Up;
+                    pushed = false;
                 }
             }
         }
@@ -124,18 +130,32 @@ public class ConstructHouse : MonoBehaviour
         }
     }
 
+    public void Pushed()
+    {
+        pushed = true;
+        startTime = Time.time;
+    }
+
+    public void Up()
+    {
+        pushed = false;
+        if (!isConstructed)
+        {
+            progress.setCurrentFill(0);
+            progress.gameObject.SetActive(false);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !pushed)
         {
             isOnTrigger = true;
-            animPlayer = other.GetComponent<Animator>();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player") && !pushed)
         {
             isOnTrigger = false;
         }

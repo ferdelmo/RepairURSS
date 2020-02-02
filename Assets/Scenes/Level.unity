@@ -246,6 +246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1771184592, guid: b1f90b51f99301243bbd6073f9288d56, type: 3}
+      propertyPath: hammer
+      value: 
+      objectReference: {fileID: 1417278153}
     - target: {fileID: 1771184599, guid: b1f90b51f99301243bbd6073f9288d56, type: 3}
       propertyPath: healthProgressBar
       value: 
@@ -702,6 +706,12 @@ PrefabInstance:
 --- !u!1 &1417278152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8559466162518816147, guid: b1f90b51f99301243bbd6073f9288d56,
+    type: 3}
+  m_PrefabInstance: {fileID: 493825504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1417278153 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 324117161, guid: b1f90b51f99301243bbd6073f9288d56,
     type: 3}
   m_PrefabInstance: {fileID: 493825504}
   m_PrefabAsset: {fileID: 0}
