@@ -9,6 +9,8 @@ public class StartMenu : MonoBehaviour
 
     public Image flag;
 
+    public Image stalin;
+
     public Text title;
 
     public AudioSource audioSource;
@@ -47,6 +49,7 @@ public class StartMenu : MonoBehaviour
 
         //TODOS LOS ALPHA
         flag.color = ini;
+        stalin.color = ini;
 
         Color c = title.color;
         c.a = ini.a;
@@ -61,6 +64,7 @@ public class StartMenu : MonoBehaviour
 
             //SETEAR LOS COLORES
             flag.color = ini;
+            stalin.color = ini;
             c.a = ini.a;
             title.color = c;
 
