@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7594371935988550720}
   - component: {fileID: 3213201309244561685}
   - component: {fileID: 1246886076632426658}
-  - component: {fileID: 418784226005108347}
+  - component: {fileID: 576373360}
   m_Layer: 0
   m_Name: Wheat
-  m_TagString: Untagged
+  m_TagString: Wheat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
   death: {fileID: -8871038989383191861, guid: f2a798c4af2199c4f821b24a960e23da, type: 3}
   wheatLeft: {fileID: 3989790307222155595, guid: 3a04903cffd87b448b5e3e13ac893c70,
     type: 3}
---- !u!58 &418784226005108347
-CircleCollider2D:
+--- !u!61 &576373360
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,9 +112,19 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.9375, y: 0.96875}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.9375, y: 0.96875}
+  m_EdgeRadius: 0

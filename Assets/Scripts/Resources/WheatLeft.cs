@@ -23,7 +23,7 @@ public class WheatLeft : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             if(collision.gameObject.GetComponent<Health>().health <
                 collision.gameObject.GetComponent<Health>().maxHealth)
@@ -33,6 +33,11 @@ public class WheatLeft : MonoBehaviour
             else{
                 USSRManager.Instance.IncrementNumWheats();
             }
+            Destroy(this.gameObject);
+        }
+        
+        if(collision.gameObject.tag == "Wheat")
+        {
             Destroy(this.gameObject);
         }
     }

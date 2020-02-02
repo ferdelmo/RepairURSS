@@ -41,7 +41,15 @@ public class Health : MonoBehaviour
     public void Damage(float damage)
     {
         //Debug.Log("Daños");
-        if(health - damage < 0)
+        if (gameObject.tag == "Player") //Not called for enemy
+        {
+            healthProgressBar.setCurrentFill(health / maxHealth);
+        }
+        else
+        {
+              this.gameObject.SetActive(false); 
+        }
+        if (health - damage < 0)
         {
             health = 0;  
             OnDeath();
@@ -49,10 +57,6 @@ public class Health : MonoBehaviour
         else
         {
             health = health - damage;
-        }
-        if( gameObject.tag == "Player") //Not called for enemy
-        {
-            healthProgressBar.setCurrentFill(health / maxHealth);
         }
         
         //Debug.Log("damaged");

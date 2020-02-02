@@ -18,12 +18,14 @@ public class Wheat : MonoBehaviour
 
     public GameObject wheatLeft;
 
+    public Collider2D coll;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = normal;
         previousRegenerate = regenerateTime;
+        coll = GetComponent<Collider2D>();
     }
 
     public void Cut()
@@ -46,7 +48,9 @@ public class Wheat : MonoBehaviour
         // checkear la colision con la hoz
         if(collision.tag == "Sickle" && live )
         {
+            coll.enabled = false;
             live = false;
+            coll = GetComponent<Collider2D>();
             StartCoroutine(Revive());
             Instantiate(wheatLeft, transform.position, transform.rotation);
             previousRegenerate = 0;
@@ -65,6 +69,7 @@ public class Wheat : MonoBehaviour
         }
         live = true;
         sr.sprite = normal;
+        coll.enabled = true;
     }
 
 
