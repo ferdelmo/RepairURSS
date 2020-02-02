@@ -82,8 +82,10 @@ public class USSRManager : MonoBehaviour
     public void WonLevel()
     {
         victorySound.Play();
-        nextScene = "SelectCountry";
-        SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
+        Debug.Log("won");
+        //nextScene = "SelectCountry";
+        //SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
         level++;
         newLevelLoaded = false;
     }
