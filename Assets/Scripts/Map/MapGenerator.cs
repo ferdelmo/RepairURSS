@@ -38,6 +38,8 @@ public class MapGenerator : MonoBehaviour
         audioSource.Play();
         Country country = USSRManager.Instance.country;
 
+
+
         /*numHouses = 10;
 
         numWheat = 10;

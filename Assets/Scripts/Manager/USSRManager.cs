@@ -32,7 +32,7 @@ public class USSRManager : MonoBehaviour
 
     public int enemyCount = 0;
 
-    public int enemyMax = 20;
+    public int enemyMax = 10;
 
     public static USSRManager Instance { get { return _instance; } }
 
@@ -60,24 +60,27 @@ public class USSRManager : MonoBehaviour
 
     private void Update()
     {
-        if (numHouses > 0 && numWheats > 0)
-        {
-            if ((!newLevelLoaded && numHouses >= houses2generate && numWheats >= wheats2generate))
-            {
-                newLevelLoaded = true;
-                WonLevel();
-            }
-        }
+
     }
 
     public void IncrementNumWheats()
     {
         numWheats++;
+        if (numHouses >= houses2generate && numWheats >= wheats2generate)
+        {
+            newLevelLoaded = true;
+            WonLevel();
+        }
     }
 
     public void IncrementNumHouses()
     {
         numHouses++;
+        if (numHouses >= houses2generate && numWheats >= wheats2generate)
+        {
+            newLevelLoaded = true;
+            WonLevel();
+        }
     }
 
     public void OnPlayerDeath()
