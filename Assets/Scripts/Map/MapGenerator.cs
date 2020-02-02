@@ -22,6 +22,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject bank;
     public GameObject house;
     public GameObject wall;
+    public GameObject floor;
 
     Vector2 tileSize = new Vector2(1, 1);
     // Start is called before the first frame update
@@ -30,12 +31,12 @@ public class MapGenerator : MonoBehaviour
 
         Country country = USSRManager.Instance.country;
 
-        numHouses = 10;
+        /*numHouses = 10;
 
         numWheat = 10;
 
         numBanks = 2;
-
+        */
         // generar dependiendo del countrya
 
         InitializeMap();
@@ -136,10 +137,23 @@ public class MapGenerator : MonoBehaviour
         int aux = 0;
         for (aux = 0; aux <= y; aux++)
         {
-            Instantiate(wall, new Vector3((float)aux - (x / 2), y / 2, 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float)aux - (x / 2), -y / 2, 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float)-x / 2, aux - (y / 2), 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float)x / 2, aux - (y / 2), 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)-x / 2, aux - (y / 2), 5), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)x / 2, aux - (y / 2), 5), Quaternion.identity);
+        }
+        for (aux = 0; aux <= x; aux++)
+        {
+            Instantiate(wall, new Vector3((float)aux - (x / 2), y / 2, 5), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)aux - (x / 2), -y / 2, 5), Quaternion.identity);
+        }
+
+        for(int i = 0; i<= x; i++)
+        {
+            for (int j = 0; j <= x; j++)
+            {
+                Vector3 position = new Vector3((float)i - (x / 2), (float)j - (y / 2), 5);
+
+                Instantiate(floor, position, Quaternion.identity);
+            }
         }
 
     }

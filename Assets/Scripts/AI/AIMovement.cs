@@ -43,11 +43,12 @@ public class AIMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mov)
         {
             Vector2 dir = player.position - transform.position;
+
             if (dir.magnitude > distance)
             {
                 dir.Normalize();
@@ -62,7 +63,7 @@ public class AIMovement : MonoBehaviour
             }
             else
             {
-
+                StopMoving(0.25f);
                 body.SetBool("move", false);
                 legs.SetBool("move", false);
             }

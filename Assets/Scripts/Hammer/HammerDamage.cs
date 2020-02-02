@@ -5,8 +5,15 @@ using UnityEngine;
 public class HammerDamage : MonoBehaviour
 {
     public float hammerDamage;
-    private bool isPushedAttack;
+    public bool isPushedAttack;
     private Animator animPlayer;
+    public Collider2D hammer;
+
+    public delegate void OnDown();
+
+    public OnDown onDown;
+    public OnDown onUp;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,27 +24,29 @@ public class HammerDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Hammer"))
-        { 
-            if(animPlayer.GetCurrentAnimatorStateInfo(0).IsName("End")
+        if (Input.GetButtonDown("Hammer") && !isPushedAttack)
+        {
+            isPushedAttack = true;
+            if (animPlayer.GetCurrentAnimatorStateInfo(0).IsName("End")
                 || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Idle")
                 || animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Move"))
             {
-                isPushedAttack = true;
                 animPlayer.SetTrigger("attackhammer");
             }
+            onDown();
         }
 
         if (Input.GetButtonUp("Hammer"))
         {
             isPushedAttack = false;
+            onUp();
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isPushedAttack && other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("bam");
             other.GetComponent<Health>().Damage(hammerDamage);

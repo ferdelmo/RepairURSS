@@ -56,6 +56,18 @@ public class AIMeleeAttack : MonoBehaviour
                 mov.StopMoving(.25f);
                 body.SetTrigger("attack");
             }
+            else
+            {
+                mov.StopMoving(.25f);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            collision.GetComponent<Health>().Damage(damage);
         }
     }
 
