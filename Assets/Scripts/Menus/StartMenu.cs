@@ -17,6 +17,8 @@ public class StartMenu : MonoBehaviour
 
     public GameObject credits;
 
+    public GameObject tutorial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,10 +82,17 @@ public class StartMenu : MonoBehaviour
         credits.SetActive(true);
     }
 
+    public void Tutorial()
+    {
+        menu.SetActive(false);
+        tutorial.SetActive(true);
+    }
+
     public void ShowMenu()
     {
         menu.SetActive(true);
         credits.SetActive(false);
+        tutorial.SetActive(false);
     }
 
     public void quit()
