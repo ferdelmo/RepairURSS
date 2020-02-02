@@ -74,11 +74,11 @@ public class MapGenerator : MonoBehaviour
             float ale = 0;
             GenerateAleatoriedPositions(ref generatedX, ref generatedY, ref ale);
 
-            Debug.Log("BANK: " + generatedX + " - " + generatedY);
+            //Debug.Log("BANK: " + generatedX + " - " + generatedY);
 
             float prob = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).r;
 
-            Debug.Log("PROOOOOOB: " + prob);
+            //Debug.Log("PROOOOOOB: " + prob);
 
             if(prob == 0)
             {
@@ -96,11 +96,11 @@ public class MapGenerator : MonoBehaviour
             float ale = 0;
             GenerateAleatoriedPositions(ref generatedX, ref generatedY, ref ale);
 
-            Debug.Log("WHEAT: " + generatedX + " - " + generatedY);
+            //Debug.Log("WHEAT: " + generatedX + " - " + generatedY);
 
             float prob = tex.GetPixel(this.x/2+generatedX, this.y / 2 + generatedY).r;
 
-            Debug.Log("PROOOOOOB: " + prob);
+            //Debug.Log("PROOOOOOB: " + prob);
 
             if (prob<0.25f)
             {
@@ -117,21 +117,31 @@ public class MapGenerator : MonoBehaviour
             float ale = 0;
             GenerateAleatoriedPositions(ref generatedX, ref generatedY, ref ale);
 
-            Debug.Log("HOUSES: " + generatedX + " - " + generatedY);
+            //Debug.Log("HOUSES: " + generatedX + " - " + generatedY);
 
             float probB = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).r;
             float probH = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).b;
             float probW = tex.GetPixel(this.x / 2 + generatedX, this.y / 2 + generatedY).g;
 
 
-            Debug.Log("PROOOOOOB: " + probB + ", " + probH + ", " + probW);
+            //Debug.Log("PROOOOOOB: " + probB + ", " + probH + ", " + probW);
 
             if (probB < 0.25f && probH<.8f && probW<.5f)
             {
                 generatedHouses += Generate(Tile.House, 2, tileSize, new Vector2(generatedX, generatedY), 3, 0);
             }
         }
-        
+
+
+        int aux = 0;
+        for (aux = 0; aux <= y; aux++)
+        {
+            Instantiate(wall, new Vector3((float)aux - (x / 2), y / 2, 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)aux - (x / 2), -y / 2, 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)-x / 2, aux - (y / 2), 0), Quaternion.identity);
+            Instantiate(wall, new Vector3((float)x / 2, aux - (y / 2), 0), Quaternion.identity);
+        }
+
     }
 
     public void GenerateAleatoriedPositions(ref int x, ref int y, ref float ale)
@@ -246,9 +256,9 @@ public class MapGenerator : MonoBehaviour
 
                         break;
                     case Tile.House:
-                        if (probW <.25f && probB < .80 && probH <.8f)
+                        if (probW <.25f && probB < .80 && probH <.25f)
                         {
-                            GenerateInfluence(tile, 2, finalPos);
+                            GenerateInfluence(tile, 4, finalPos);
 
                             GameObject c = Instantiate(obj, finalPos, Quaternion.identity);
                             instantiated++;
@@ -258,16 +268,6 @@ public class MapGenerator : MonoBehaviour
             }
 
             i++;
-        }
-
-
-        int aux = 0;
-        for (aux = 0; aux <= y; aux++)
-        {
-            Instantiate(wall, new Vector3((float) aux - (x / 2), y / 2, 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float) aux - (x / 2), - y / 2, 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float) - x / 2, aux - (y/2) , 0), Quaternion.identity);
-            Instantiate(wall, new Vector3((float) x / 2, aux - (y / 2), 0), Quaternion.identity);
         }
 
         return instantiated;
@@ -300,7 +300,14 @@ public class MapGenerator : MonoBehaviour
 
                 if (dist < radius && auxx < x && auxy < y && auxx >= 0&& auxy >= 0)
                 {
-                    tex.SetPixel(auxx, auxy, tex.GetPixel(auxx,auxy)+Color.Lerp(c, Color.black, dist / radius));
+                    if (dist < 2 && t != Tile.Wheat)
+                    {
+                        tex.SetPixel(auxx, auxy, tex.GetPixel(auxx, auxy) + Color.Lerp(c, Color.black, 0.0f));
+                    }
+                    else
+                    {
+                        tex.SetPixel(auxx, auxy, tex.GetPixel(auxx, auxy) + Color.Lerp(c, Color.black, dist / radius));
+                    }
                 }
             }
         }
