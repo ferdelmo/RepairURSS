@@ -7,7 +7,7 @@ public class ConstructHouse : MonoBehaviour
 
     public int timeToConstruct;
     public ProgressBar progress;
-    public Sprite constructedHouse;
+    public Sprite []constructedHouse;
     public Sprite damagedHouse;
     public bool isConstructed = false;
 
@@ -108,7 +108,7 @@ public class ConstructHouse : MonoBehaviour
                 progress.setCurrentFill(lapsedTime / timeToConstruct);
                 if (lapsedTime >= timeToConstruct)
                 {
-                    GetComponent<SpriteRenderer>().sprite = constructedHouse;
+                    GetComponent<SpriteRenderer>().sprite = constructedHouse[Random.Range(0,constructedHouse.Length)];
                     isConstructed = true;
                     USSRManager.Instance.IncrementNumHouses();
                     progress.gameObject.SetActive(false);

@@ -1271,6 +1271,7 @@ GameObject:
   - component: {fileID: 1398300022}
   - component: {fileID: 1398300024}
   - component: {fileID: 1398300023}
+  - component: {fileID: 1398300025}
   m_Layer: 5
   m_Name: URSS_FLAG
   m_TagString: Untagged
@@ -1315,7 +1316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7ac6d771fb396b9429d34c4f92590dba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: caf4a63465e9df74ca76d14d96c9458b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1333,6 +1334,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398300021}
   m_CullTransparentMesh: 0
+--- !u!95 &1398300025
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398300021}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 071382ff2b2631a4f9982b6acc54e6d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1407550807
 GameObject:
   m_ObjectHideFlags: 0
